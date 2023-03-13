@@ -11,10 +11,8 @@ function OptionsAdmin() {
   const navigate = useNavigate();
 
   const logOut = () => {
-    // Cookies.remove('rol')
     localStorage.removeItem("rol");
     navigate("../", { replace: true });
-    console.log("clean");
   };
 
   return (

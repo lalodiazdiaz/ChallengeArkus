@@ -44,7 +44,7 @@ function Login() {
         showConfirmButton: false,
         timer: 1500,
       });
-      localStorage.setItem('rol','admin')
+      localStorage.setItem('rol','user')
      if (localStorage.getItem('rol')===ROL.user) {
       navigation('/homeUser')
      }else {
@@ -54,7 +54,6 @@ function Login() {
     },
   });
 
-  console.log(localStorage);
   return (
     <div className="relative flex h-full w-full">
       <div className="h-screen w-1/2 bg-slate-600">
