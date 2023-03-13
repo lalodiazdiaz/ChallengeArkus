@@ -24,7 +24,7 @@ function UserList() {
             </th>
             <th scope="col" class="  font-medium text-gray-900 items-center">
               <NavLink
-                to={"/home/users"}
+                to={"/homeAdmin/users"}
                 x-data="{ tooltip: 'Edite' }"
                 className="flex justify-evenly items-center mr-7"
               >

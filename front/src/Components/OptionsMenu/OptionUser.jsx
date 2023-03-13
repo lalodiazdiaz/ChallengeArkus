@@ -1,5 +1,4 @@
 import { ArrowRightOnRectangleIcon, UserCircleIcon } from '@heroicons/react/20/solid'
-import Cookies from 'js-cookie'
 import React from 'react'
 import {useNavigate } from 'react-router-dom'
 
@@ -8,7 +7,7 @@ function OptionUser() {
 const navigate = useNavigate()
 
   const logOut =() =>{
-    Cookies.remove('rol')
+    localStorage.removeItem('rol')
     navigate("../", { replace: true })
     console.log('clean');
   }

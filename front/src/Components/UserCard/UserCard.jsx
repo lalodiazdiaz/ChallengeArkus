@@ -42,7 +42,7 @@ function UserCard() {
           <button type="button" onClick={deleteUser}>
             <TrashIcon className="h-6 w-6 text-red-600" />
           </button>
-          <NavLink to={"/home/users"} x-data="{ tooltip: 'Edite' }">
+          <NavLink to={"/homeAdmin/users"} x-data="{ tooltip: 'Edite' }">
             <PencilSquareIcon className="h-6 w-6 text-blue-500" />
           </NavLink>
         </div>

@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { useFormik } from "formik";
 import { EyeIcon, EyeSlashIcon } from "@heroicons/react/24/outline";
-import Cookies from "js-cookie";
+import { ROL } from "../../constants";
 
 const validate = (values) => {
   const errors = {};
@@ -44,12 +44,17 @@ function Login() {
         showConfirmButton: false,
         timer: 1500,
       });
-      navigation("/home");
-      Cookies.set("rol", "user");
+      localStorage.setItem('rol','admin')
+     if (localStorage.getItem('rol')===ROL.user) {
+      navigation('/homeUser')
+     }else {
+      navigation('/homeAdmin')
+     }
 
     },
   });
 
+  console.log(localStorage);
   return (
     <div className="relative flex h-full w-full">
       <div className="h-screen w-1/2 bg-slate-600">

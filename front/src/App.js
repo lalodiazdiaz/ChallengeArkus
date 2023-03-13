@@ -7,32 +7,74 @@ import Account from "./Components/CrudAccount/Account";
 import UserList from "./Components/UserList/UserList";
 import AccountList from "./Components/AccountList/AccountList";
 import Users from "./Components/CrudUser/Users";
-import Cookies from "js-cookie";
-import { ROL } from "./constants";
 import ProtectedRoute from "./Components/ProtectedRoute/ProtectedRoute";
 
 function App() {
 
-  const rol = Cookies.get("rol");
-
-  console.log(rol);
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Login />} />
-
-        {rol === ROL.user ? (
-          <Route path="/home" element={ <ProtectedRoute><Home rol={rol} /></ProtectedRoute>}>
-            <Route path="/home" element={ <ProtectedRoute><Profile /></ProtectedRoute>} />
-          </Route>
-        ) : (
-          <Route path="/home" element={(<ProtectedRoute> <Home rol={rol} /></ProtectedRoute>) }>
-            <Route path="/home" element={<ProtectedRoute><AccountList /></ProtectedRoute> } />
-            <Route path="/home/accounts" element={ <ProtectedRoute> <Account /></ProtectedRoute>} />
-            <Route path="/home/users" element={ <ProtectedRoute> <Users /></ProtectedRoute>} />
-            <Route path="/home/userslist" element={ <ProtectedRoute><UserList /></ProtectedRoute>} />
-          </Route>
-        )}
+        <Route
+          path="/homeAdmin"
+          element={
+            <ProtectedRoute>
+              <Home />
+            </ProtectedRoute>
+          }
+        >
+          <Route
+            path="/homeAdmin/"
+            element={
+              <ProtectedRoute>
+                {" "}
+                <AccountList />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/homeAdmin/accounts"
+            element={
+              <ProtectedRoute>
+                {" "}
+                <Account />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/homeAdmin/users"
+            element={
+              <ProtectedRoute>
+                <Users />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/homeAdmin/userslist"
+            element={
+              <ProtectedRoute>
+                <UserList />
+              </ProtectedRoute>
+            }
+          />
+        </Route>
+        <Route
+          path="/homeUser"
+          element={
+            <ProtectedRoute>
+              <Home />
+            </ProtectedRoute>
+          }
+        >
+          <Route
+            path="/homeUser/"
+            element={
+              <ProtectedRoute>
+                <Profile />
+              </ProtectedRoute>
+            }
+          />
+        </Route>
       </Routes>
     </BrowserRouter>
   );

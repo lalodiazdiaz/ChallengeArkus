@@ -20,7 +20,7 @@ function AccountList() {
             </th>
             <th scope="col" className="  font-medium text-gray-900 items-center">
               <NavLink
-                to={"/home/accounts"}
+                to={"/homeAdmin/accounts"}
                 x-data="{ tooltip: 'Edite' }"
                 className="flex justify-evenly items-center mr-7"
               >

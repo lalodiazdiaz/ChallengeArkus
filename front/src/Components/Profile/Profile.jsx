@@ -21,7 +21,7 @@ function Profile() {
   
   return (
     <div className=" flex bg-slate-600 h-full w-full justify-center items-center flex-col">
-      <form action="" method="post" className="w-3/4">
+      <form className="w-3/4">
         <div className="md:flex items-center mt-12">
           <div className="w-full md:w-1/2 flex flex-col">
             <label className="font-semibold leading-none text-white">
