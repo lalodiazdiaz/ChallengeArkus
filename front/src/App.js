@@ -8,7 +8,7 @@ import UserList from "./Components/UserList/UserList";
 import AccountList from "./Components/AccountList/AccountList";
 import Users from "./Components/CrudUser/Users";
 import ProtectedRoute from "./Components/ProtectedRoute/ProtectedRoute";
-
+import TeamList from './Components/TeamList/TeamList'
 function App() {
 
   return (
@@ -54,6 +54,14 @@ function App() {
             element={
               <ProtectedRoute>
                 <UserList />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/homeAdmin/teamlist"
+            element={
+              <ProtectedRoute>
+                <TeamList />
               </ProtectedRoute>
             }
           />

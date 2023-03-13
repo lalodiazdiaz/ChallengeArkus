@@ -36,8 +36,8 @@ function AccountCard() {
       <td className="px-6 py-4">Steven Jobs</td>
       <td className="px-6 py-4">
         <div className="flex gap-2">
-          <span className="inline-flex items-center gap-1 rounded-full bg-blue-50 px-2 py-1 text-xs font-semibold text-blue-600">
-            Design
+          <span className="inline-flex items-center  rounded-full px-2 py-1 ">
+            Erick Mejia
           </span>
         </div>
       </td>
@@ -46,7 +46,7 @@ function AccountCard() {
           <button type="button" onClick={deleteAccount}>
             <TrashIcon className="h-6 w-6 text-red-600" />
           </button>
-          <NavLink to={"/homeAdmin/accounts"} x-data="{ tooltip: 'Edite' }">
+          <NavLink to={"/home/users"} x-data="{ tooltip: 'Edite' }">
             <PencilSquareIcon className="h-6 w-6 text-blue-500" />
           </NavLink>
         </div>
