@@ -98,7 +98,7 @@ function Account() {
 
         <div className="flex items-center justify-end w-full">
           <button className=" w-52 mt-9 font-semibold leading-none text-white p-2.5 bg-red-600 rounded hover:bg-red-800 ">
-            Guardar Cambios
+            Save
           </button>
         </div>
       </form>

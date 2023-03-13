@@ -9,6 +9,8 @@ import AccountList from "./Components/AccountList/AccountList";
 import Users from "./Components/CrudUser/Users";
 import ProtectedRoute from "./Components/ProtectedRoute/ProtectedRoute";
 import TeamList from './Components/TeamList/TeamList'
+import LogTeams from "./Components/LogTeams/LogTeams";
+import CrudLog from "./Components/CrudLog/CrudLog";
 function App() {
 
   return (
@@ -62,6 +64,22 @@ function App() {
             element={
               <ProtectedRoute>
                 <TeamList />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/homeAdmin/logteams"
+            element={
+              <ProtectedRoute>
+                <LogTeams />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/homeAdmin/addlogs"
+            element={
+              <ProtectedRoute>
+                <CrudLog />
               </ProtectedRoute>
             }
           />

@@ -1,3 +1,4 @@
+import { TableCellsIcon } from "@heroicons/react/20/solid";
 import {
   ArrowRightOnRectangleIcon,
   BuildingOffice2Icon,
@@ -58,6 +59,21 @@ function OptionsAdmin() {
           </span>
           <span className="ml-2 text-sm tracking-wide truncate  text-white font-bold">
             Teams
+          </span>
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to={"/homeAdmin/logteams"}
+          className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-slate-900 text-gray-600 hover:text-gray-800 border-l-4 border-transparent hover:border-slate-50 pr-6"
+        >
+          <span className="inline-flex justify-center items-center ml-4  text-white font-bold">
+            <TableCellsIcon  className="h-6 w-6 text-white" />
+          </span>
+          <span className="ml-2 text-sm tracking-wide truncate text-white font-bold ">
+          <abbr title="Teams movement log">
+                T M L 
+              </abbr>
           </span>
         </NavLink>
       </li>

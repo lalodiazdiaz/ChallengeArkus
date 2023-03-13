@@ -44,7 +44,7 @@ function Login() {
         showConfirmButton: false,
         timer: 1500,
       });
-      localStorage.setItem('rol','user')
+      localStorage.setItem('rol','admin')
      if (localStorage.getItem('rol')===ROL.user) {
       navigation('/homeUser')
      }else {
