@@ -1,7 +1,7 @@
 const express = require("express");
-const { getAccount } = require("../controllers/accountContorller");
+const { postAccount } = require("../controllers/accountController");
 const app = express();
 
-app.get('/', getAccount)
+app.post('/', postAccount)
 
-module.exports = app;
+module.exports = app; 
