@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { useFormik } from "formik";
 import {
-  ArrowLeftOnRectangleIcon,
   ArrowRightOnRectangleIcon,
   EyeIcon,
   EyeSlashIcon,
@@ -49,7 +48,7 @@ function Login() {
         showConfirmButton: false,
         timer: 1500,
       });
-      localStorage.setItem("rol", "admin");
+      localStorage.setItem("rol", "user");
       if (localStorage.getItem("rol") === ROL.user) {
         navigation("/homeUser");
       } else {

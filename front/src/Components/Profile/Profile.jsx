@@ -1,27 +1,27 @@
+import { FolderPlusIcon } from "@heroicons/react/24/outline";
 import React from "react";
 import Swal from "sweetalert2";
 
 function Profile() {
-
-  const saveChange =()=>{
+  const saveChange = () => {
     Swal.fire({
-      title: 'Do you want to save the changes?',
+      title: "Do you want to save the changes?",
       showDenyButton: true,
-      showCancelButton: true,
-      confirmButtonText: 'Save',
+      confirmButtonColor: "#3085d6",
+      confirmButtonText: "Save",
       denyButtonText: `Don't save`,
     }).then((result) => {
       if (result.isConfirmed) {
-        Swal.fire('Saved!', '', 'success')
+        Swal.fire("Saved!", "", "success");
       } else if (result.isDenied) {
-        Swal.fire('Changes are not saved', '', 'info')
+        Swal.fire("Changes are not saved", "", "info");
       }
-    })
-  }
-  
+    });
+  };
+
   return (
     <div className=" flex bg-slate-600 h-full w-full justify-center items-center flex-col">
-      <form className="w-3/4">
+      <div className="w-3/4" onClick={saveChange}>
         <div className="md:flex items-center mt-12">
           <div className="w-full md:w-1/2 flex flex-col">
             <label className="font-semibold leading-none text-white">
@@ -78,11 +78,11 @@ function Profile() {
         </div>
 
         <div className="flex items-center justify-end w-full">
-          <button onClick={saveChange} className=" w-52 mt-9 font-semibold leading-none text-white p-2.5 bg-red-600 rounded hover:bg-red-800 focus:ring-2 focus:ring-offset-2 focus:ring-blue-700 focus:outline-none">
-            Guardar Cambios
+          <button className=" w-52 mt-9 font-semibold leading-none text-white p-2.5 bg-red-600 rounded hover:bg-red-800 flex justify-center text-center items-center">
+            <FolderPlusIcon className="h-5 w-6 text-white mr-2 " /> Save
           </button>
         </div>
-      </form>
+      </div>
     </div>
   );
 }
