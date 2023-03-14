@@ -1,0 +1,42 @@
+const sessionService = require("../services/sessionService");
+const sessionDTO = require("../controllers/DTO/sessionDTO");
+const userModel = require("../models/userSchema");
+const bycrypt = require("bcrypt");
+
+const login = async (req, res) => {
+  try {
+    const validatedData = await sessionDTO.inputLoginDTO(req.body);
+
+    if (validatedData.isValid === false) {
+      return res.status(404).send({
+        isValid: false,
+        message: "User not found",
+        data: null,
+      });
+    }
+
+    const user = await userModel.findOne(validatedData.email);
+    if (!user) {
+      return res.status(404).send({
+        isValid: false,
+        message: "User not found",
+        data: null,
+      });
+    }
+
+    const validatedPassword = await bycrypt.compare(
+      validatedData.passwword,
+      user.password
+    );
+
+    if (!validatedPassword) {
+      return res.status(401).send({
+        isValid: false,
+        message: "The email or the password is incorrect",
+        data: null,
+      });
+    }
+
+    
+  } catch (error) {}
+};
