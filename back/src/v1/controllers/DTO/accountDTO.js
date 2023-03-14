@@ -1,9 +1,8 @@
 const joi = require("joi");
  
 function inputCreateAccount(data) {
-    console.log(data);
     const schema = joi.object({
-        account: joi.string().required(),
+        accountName: joi.string().required(),
         client: joi.string().required(),
         operationManager:joi.string().required()
     });
@@ -13,12 +12,11 @@ function inputCreateAccount(data) {
     if(validatedData.error) {
         return({
             isValid: false,
-            message: validatedData.error,
+            message: validatedData.error.details[0].message.replace('\"', "").replace('\"', ""),
             data: null
         });
     }
 
-    console.log(validatedData);
     return validatedData.value;
 }
 

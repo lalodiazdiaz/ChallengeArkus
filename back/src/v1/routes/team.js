@@ -1,7 +1,7 @@
 const express = require("express");
-const { getAccount } = require("../controllers/teamCotroller");
+const { postTeam } = require("../controllers/teamCotroller");
 const app = express();
 
-app.get('/', getAccount)
+app.post("/createTeam", postTeam);
 
-module.exports = app; 
+module.exports = app;

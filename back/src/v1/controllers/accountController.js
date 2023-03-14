@@ -1,28 +1,37 @@
-const { inputCreateAccount } = require("./DTO/accountDTO");
-const accountModel =  require('../models/accountSchema');
+const accountDTO = require("./DTO/accountDTO");
+const accountModel = require("../models/accountSchema");
 const { createAccount } = require("../services/accountService");
 
-
-const postAccount =async(req,res)=>{
-    console.log(req.body);
-    const validatedData = inputCreateAccount(req.body);
-    if(!validatedData.isValid ) return(res.status(422).send(validatedData));
-
-    const ifExistsAccount = await accountModel.findOne({account : validatedData.account})
-    if (ifExistsAccount) {  
-        return (res.status(409).send('alv me vale verga me vale verga'))
+const postAccount = async (req, res) => {
+  try {
+    //   Validar informacion
+    const validatedData = accountDTO.inputCreateAccount(req.body);
+    if (validatedData.isValid === false) {
+      return res.status(422).send(validatedData);
     }
 
-    
-    const newAccount = createAccount()
+    //   validar si existe
+    const ifExistsAccount = await accountModel.findOne({
+      accountName: validatedData.accountName,
+    });
+    if (ifExistsAccount) {
+      return res.status(409).send("Account name already exists");
+    }
 
-    return(res.status(200).send({
-        isValid: true,
-        message: "Account created",
-        data: newAccount
-    }))
+    const data = await createAccount(req.body);
 
-
+    return res.status(200).send({
+      isValid: data.isValid,
+      message: data.message,
+      data: data.data,
+    });
+  } catch (error) {
+    return res.status(500).send({
+      isValid: false,
+      message: error,
+      data: null,
+    });
+  }
 };
 
-module.exports = { postAccount }
+module.exports = { postAccount };

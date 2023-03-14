@@ -4,7 +4,7 @@ const { Schema } = mongoose;
 
 const accountSchema = mongoose.Schema({
     id: {type: Schema.Types.ObjectId},
-    account: { type: String },
+    accountName: { type: String },
     client: {type:String},
     operationManager: {type:String}
 });

@@ -2,8 +2,8 @@ const express = require('express');
 
 const app = express()
 
-app.use('/account', require('./account'))
-// app.use('/team', require('./team'))
-// app.use('/user', require('./user'))
+app.use('/accounts', require('./account'))
+app.use('/teams', require('./team'))
+app.use('/users', require('./user'))
 
 module.exports = app
