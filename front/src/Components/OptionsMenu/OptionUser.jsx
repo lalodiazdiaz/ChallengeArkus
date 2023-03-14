@@ -1,4 +1,5 @@
 import { ArrowRightOnRectangleIcon, UserCircleIcon } from '@heroicons/react/20/solid'
+import { ArrowLeftOnRectangleIcon } from '@heroicons/react/24/outline'
 import React from 'react'
 import {useNavigate } from 'react-router-dom'
 
@@ -34,7 +35,7 @@ const navigate = useNavigate()
     <li  >
       <label onClick={logOut} className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-slate-900 text-gray-600 hover:text-gray-800 border-l-4 border-transparent hover:border-slate-50 pr-6">
         <span className="inline-flex justify-center items-center ml-4  text-white font-bold">
-        <ArrowRightOnRectangleIcon className="h-6 w-6 text-white" />
+        <ArrowLeftOnRectangleIcon  className="h-6 w-6 text-white" />
 
         </span>
         <span className="ml-2 text-sm tracking-wide truncate  text-white font-bold">

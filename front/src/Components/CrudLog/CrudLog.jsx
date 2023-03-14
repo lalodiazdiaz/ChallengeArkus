@@ -1,3 +1,4 @@
+import { FolderPlusIcon } from "@heroicons/react/24/outline";
 import { useFormik } from "formik";
 import React from "react";
 import Swal from "sweetalert2";
@@ -115,11 +116,8 @@ function CrudLog() {
           </div>
         </div>
         <div className="flex items-center justify-end w-full">
-          <button
-            type="submit"
-            className=" w-52 mt-9 font-semibold leading-none text-white p-2.5 bg-red-600 rounded hover:bg-red-800 "
-          >
-            Save
+          <button className=" w-52 mt-9 font-semibold leading-none text-white p-2.5 bg-red-600 rounded hover:bg-red-800 flex justify-center text-center items-center">
+            <FolderPlusIcon className="h-5 w-6 text-white mr-2 " /> Save
           </button>
         </div>
       </form>

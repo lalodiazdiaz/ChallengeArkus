@@ -18,7 +18,7 @@ function AccountCard() {
         Swal.fire({
           position: "center",
           icon: "success",
-          html:" <p>Account has been deleted.</p>",
+          html: " <p>Account has been deleted.</p>",
           showConfirmButton: false,
           timer: 1500,
         });
@@ -46,7 +46,7 @@ function AccountCard() {
           <button type="button" onClick={deleteAccount}>
             <TrashIcon className="h-6 w-6 text-red-600" />
           </button>
-          <NavLink to={"/home/users"} x-data="{ tooltip: 'Edite' }">
+          <NavLink to={"/homeAdmin/accounts"} x-data="{ tooltip: 'Edite' }">
             <PencilSquareIcon className="h-6 w-6 text-blue-500" />
           </NavLink>
         </div>

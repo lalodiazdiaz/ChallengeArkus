@@ -2,7 +2,12 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { useFormik } from "formik";
-import { EyeIcon, EyeSlashIcon } from "@heroicons/react/24/outline";
+import {
+  ArrowLeftOnRectangleIcon,
+  ArrowRightOnRectangleIcon,
+  EyeIcon,
+  EyeSlashIcon,
+} from "@heroicons/react/24/outline";
 import { ROL } from "../../constants";
 
 const validate = (values) => {
@@ -57,9 +62,16 @@ function Login() {
     <div className="relative flex h-full w-full">
       <div className="h-screen w-1/2 bg-slate-600">
         <div className="mx-auto flex h-full w-2/3 flex-col justify-center text-white xl:w-1/2">
-          <div>
-            <p className="text-2xl">Login</p>
-            <p>please login to continue|</p>
+          <div className="flex">
+            <div>
+              <p className="text-2xl">Login</p>
+              <p>please login to continue |</p>
+            </div>
+            <img
+              className="h-20 text-center ml-3"
+              src="https://uploads-ssl.webflow.com/5e589a8b7bb9af87ad968338/613f82a2bceafc58516997ab_ArkusNexus_iso.png"
+              alt="mind"
+            />
           </div>
           <div className="mt-10">
             <form onSubmit={formik.handleSubmit}>
@@ -112,9 +124,10 @@ function Login() {
               <div className="my-10">
                 <button
                   type="submit"
-                  className="w-full rounded bg-red-600 p-2.5 hover:bg-red-800"
+                  className="w-full rounded bg-red-600 p-2.5 hover:bg-red-800 flex text-center justify-center"
                 >
-                  Login
+                  <ArrowRightOnRectangleIcon className="h-6 w-6 text-white mr-2" />
+                  Login{" "}
                 </button>
               </div>
             </form>
@@ -123,7 +136,7 @@ function Login() {
       </div>
       <div className="h-screen w-1/2 bg-blue-600">
         <img
-          src="https://images.pexels.com/photos/2523959/pexels-photo-2523959.jpeg"
+          src="https://devsteam.io/images/dteam.jpg"
           className="h-full w-full"
           alt=""
         />
