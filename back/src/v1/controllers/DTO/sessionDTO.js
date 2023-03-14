@@ -26,7 +26,12 @@ function inputLoginDTO(data) {
 }
 
 function outputLoginDTO(tokenData, userData) {
-  const outputData = {};
+  const outputData = {
+    idUser: userData._id,
+    name: userData.name,
+    range: userData.range,
+    token: tokenData.token,
+  };
 
   return outputData;
 }

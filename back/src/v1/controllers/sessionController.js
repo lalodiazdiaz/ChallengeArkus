@@ -1,7 +1,7 @@
 const sessionService = require("../services/sessionService");
 const sessionDTO = require("../controllers/DTO/sessionDTO");
 const userModel = require("../models/userSchema");
-const bycrypt = require("bcrypt");
+const bycrypt = require("bcryptjs");
 
 const login = async (req, res) => {
   try {
@@ -37,6 +37,20 @@ const login = async (req, res) => {
       });
     }
 
-    
-  } catch (error) {}
+    const data = await sessionService.login(req.body);
+
+    return res.status(200).send({
+      isValid: data.isValid,
+      message: data.message,
+      data: data.data,
+    });
+  } catch (error) {
+    return res.status(500).send({
+      isValid: false,
+      message: error,
+      data: null,
+    });
+  }
 };
+
+module.exports = { login };
