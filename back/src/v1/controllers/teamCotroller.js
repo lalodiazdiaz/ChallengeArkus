@@ -23,6 +23,7 @@ const postTeam = async (req, res) => {
       message: data.message,
       data: data.data,
     });
+    
   } catch (error) {
     return res.status(500).send({
       isValid: false,
