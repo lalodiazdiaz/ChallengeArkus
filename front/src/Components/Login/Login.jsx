@@ -40,17 +40,16 @@ function Login() {
       Swal.fire({
         position: "center",
         icon: "success",
-        html:" <p>Welcome!</p>",
+        html: " <p>Welcome!</p>",
         showConfirmButton: false,
         timer: 1500,
       });
-      localStorage.setItem('rol','admin')
-     if (localStorage.getItem('rol')===ROL.user) {
-      navigation('/homeUser')
-     }else {
-      navigation('/homeAdmin')
-     }
-
+      localStorage.setItem("rol", "admin");
+      if (localStorage.getItem("rol") === ROL.user) {
+        navigation("/homeUser");
+      } else {
+        navigation("/homeAdmin");
+      }
     },
   });
 
@@ -65,9 +64,7 @@ function Login() {
           <div className="mt-10">
             <form onSubmit={formik.handleSubmit}>
               <div>
-                <label className="mb-2.5 block font-extrabold" >
-                  Email
-                </label>
+                <label className="mb-2.5 block font-extrabold">Email</label>
                 <input
                   type="email"
                   id="email"
@@ -77,7 +74,9 @@ function Login() {
                   className="inline-block w-full rounded bg-white p-2 leading-none text-black placeholder-indigo-900 shadow placeholder:opacity-30"
                   placeholder="mail@user.com"
                 />
-                {formik.errors.email ? <div className="mt-2">{formik.errors.email}</div> : null}
+                {formik.errors.email ? (
+                  <div className="mt-2">{formik.errors.email}</div>
+                ) : null}
               </div>
               <div className="inline-block w-full  rounded  leading-none text-white placeholder-indigo-900 mt-4 ">
                 <label className="font-semibold leading-none  text-white">
@@ -85,14 +84,14 @@ function Login() {
                 </label>
                 <div className="flex flex-row leading-none text-gray-900 justify-center items-center mt-4">
                   <input
-                  id="password"
-                  name="password"
+                    id="password"
+                    name="password"
                     type={passwordType}
                     className="inline-block h-10 w-full rounded-l bg-white p-2 leading-none text-black placeholder-indigo-900 shadow placeholder:opacity-30 border-r-0"
                     placeholder="Password"
                     onChange={formik.handleChange}
                     value={formik.values.password}
-                    />
+                  />
                   {passwordType === "password" ? (
                     <EyeIcon
                       className="h-10 w-10  bg-gray-100 border rounded-r-md border-gray-500 text-gray-500 cursor-pointer p-2 hover:bg-gray-300"
@@ -105,12 +104,16 @@ function Login() {
                     />
                   )}
                 </div>
-                {formik.errors.email ? <div className="mt-2">{formik.errors.email}</div> : null}
-
+                {formik.errors.email ? (
+                  <div className="mt-2">{formik.errors.email}</div>
+                ) : null}
               </div>
 
               <div className="my-10">
-                <button className="w-full rounded bg-red-600 p-2.5 hover:bg-red-800">
+                <button
+                  type="submit"
+                  className="w-full rounded bg-red-600 p-2.5 hover:bg-red-800"
+                >
                   Login
                 </button>
               </div>

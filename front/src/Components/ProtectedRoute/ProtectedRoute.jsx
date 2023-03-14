@@ -1,13 +1,12 @@
-import Cookies from 'js-cookie';
-import { Navigate } from 'react-router-dom';
+import { Navigate } from "react-router-dom";
 
 function ProtectedRoute({ children }) {
-	const user = Cookies.get('rol') || null
-	if (!user) {
-		return <Navigate replace to="/" />;
-	}
+  const user = localStorage.getItem("rol");
+  if (!user) {
+    return <Navigate replace to="/" />;
+  }
 
-	return children;
+  return children;
 }
 
 export default ProtectedRoute;

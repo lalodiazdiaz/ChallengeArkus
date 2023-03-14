@@ -8,11 +8,10 @@ import UserList from "./Components/UserList/UserList";
 import AccountList from "./Components/AccountList/AccountList";
 import Users from "./Components/CrudUser/Users";
 import ProtectedRoute from "./Components/ProtectedRoute/ProtectedRoute";
-import TeamList from './Components/TeamList/TeamList'
+import TeamList from "./Components/TeamList/TeamList";
 import LogTeams from "./Components/LogTeams/LogTeams";
 import CrudLog from "./Components/CrudLog/CrudLog";
 function App() {
-
   return (
     <BrowserRouter>
       <Routes>
