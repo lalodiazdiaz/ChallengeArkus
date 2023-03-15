@@ -17,9 +17,8 @@ function inputLoginDTO(data) {
           .replace('"', ""),
         data: null,
       };
-
-      return validatedData.value;
     }
+    return validatedData.value;
   } catch (error) {
     return { isValid: false, message: error, data: null };
   }
