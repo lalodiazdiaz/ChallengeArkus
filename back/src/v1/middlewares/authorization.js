@@ -16,7 +16,7 @@ async function findById(id) {
 
 const firewall = async (req, res, next) => {
   try {
-    const bearer = req.headers.authorization.splt(" ")[1];
+    const bearer = req.headers.authorization.split(" ")[1];
     if (!bearer) {
       return res.status(401).send("Unauthorized");
     }
@@ -24,11 +24,10 @@ const firewall = async (req, res, next) => {
     if (!tokenFound) {
       return res.status(401).send("Unauthorized");
     }
-    const user = await findById(tokenFound.userID);
+    const user = await findById(tokenFound.userId);
     if (!user) {
-      return res.status(401).send("Unauthorized");
+      return res.status(401).send("Unauthorized 1");
     }
-
     jwt.verify(bearer, process.env.TOKEN, (error) => {
       if (error) {
         return res.status(401).send("Unauthorized");
@@ -37,7 +36,7 @@ const firewall = async (req, res, next) => {
 
     return next();
   } catch (error) {
-    return res.status(401).send("Unauthorized");
+    return res.status(401).send("Unauthorized 5");
   }
 };
 

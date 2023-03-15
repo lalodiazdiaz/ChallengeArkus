@@ -2,19 +2,19 @@ import React from "react";
 import Swal from "sweetalert2";
 import { useFormik } from "formik";
 import { FolderPlusIcon } from "@heroicons/react/24/outline";
+import { createAccount } from "../../Services/AccountService";
 
 const validate = (values) => {
   const errors = {};
   if (!values.accountName) {
     errors.accountName = "Required";
   }
-  if (!values.clientName) {
-    errors.clientName = "Required";
+  if (!values.client) {
+    errors.client = "Required";
   }
-  if (!values.operationsManager) {
-    errors.operationsManager = "Required";
+  if (!values.operationManager) {
+    errors.operationManager = "Required";
   }
-
   return errors;
 };
 
@@ -22,18 +22,24 @@ function Account() {
   const formik = useFormik({
     initialValues: {
       accountName: "",
-      clientName: "",
-      operationsManager: "",
+      client: "",
+      operationManager: "",
     },
     validate,
     onSubmit: (values) => {
-      Swal.fire({
-        position: "center",
-        icon: "success",
-        html: " <p>New account has been added.</p>",
-        showConfirmButton: false,
-        timer: 1500,
-      });
+      console.log(values);
+      createAccount(values)
+        .then((result) => {
+          console.log(result);
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            html: " <p>New account has been added.</p>",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        })
+        .catch((err) => {});
     },
   });
   return (
@@ -63,15 +69,15 @@ function Account() {
               Client name
             </label>
             <input
-              id="clientAccount"
-              name="clientName"
+              id="client"
+              name="client"
               onChange={formik.handleChange}
-              value={formik.values.clientName}
+              value={formik.values.client}
               type="text"
               className="leading-none text-gray-900 p-2.5 focus:outline-none focus:border-blue-700 mt-4 bg-gray-100 border rounded border-gray-200"
             />
-            {formik.errors.clientName ? (
-              <div className="text-white">{formik.errors.clientName}</div>
+            {formik.errors.client ? (
+              <div className="text-white">{formik.errors.client}</div>
             ) : null}
           </div>
         </div>
@@ -82,17 +88,15 @@ function Account() {
               Operations manager
             </label>
             <input
-              id="operationsManager"
-              name="operationsManager"
+              id="operationManager"
+              name="operationManager"
               type="text"
               onChange={formik.handleChange}
-              value={formik.values.operationsManager}
+              value={formik.values.operationManager}
               className="leading-none text-gray-900 p-2.5 focus:outline-none focus:border-blue-700 mt-4 bg-gray-100 border rounded border-gray-200"
             />
-            {formik.errors.operationsManager ? (
-              <div className="text-white">
-                {formik.errors.operationsManager}
-              </div>
+            {formik.errors.operationManager ? (
+              <div className="text-white">{formik.errors.operationManager}</div>
             ) : null}
           </div>
         </div>

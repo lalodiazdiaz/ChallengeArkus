@@ -9,7 +9,6 @@ require("dotenv").config();
 async function addToken(token) {
   const newToken = new Token(token);
   const savedToken = await newToken.save();
-  console.log(savedToken);
   return savedToken;
 }
 
@@ -19,7 +18,7 @@ async function login(data) {
   const token = jwt.sign(user._id.toString(), process.env.TOKEN);
 
   const addedToken = await addToken({
-    userID: user._id,
+    userId: user._id,
     token,
   });
 

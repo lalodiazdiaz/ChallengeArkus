@@ -10,7 +10,7 @@ async function findByToken(token) {
 }
 
 async function findById(id) {
-  const user = await usersModel.findById(id);
+  const user = await userModel.findById(id);
   return user;
 }
 
@@ -34,8 +34,9 @@ const superAndAdmin = async (req, res, next) => {
   );
 
   const userData = await findById(idUser);
+  console.log(userData.range);
 
-  if (userData.range !== "super" || userData.range !== "admin") {
+  if (userData.range !== "super" && userData.range !== "admin") {
     return res.status(403).send({
       isValid: false,
       message: "Don't have permissions to access this resource",

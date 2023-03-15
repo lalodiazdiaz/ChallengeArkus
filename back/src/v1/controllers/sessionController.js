@@ -5,7 +5,6 @@ const bycrypt = require("bcryptjs");
 
 const login = async (req, res) => {
   try {
-    console.log(req.body);
     const validatedData = await sessionDTO.inputLoginDTO(req.body);
 
     if (validatedData.isValid === false) {
@@ -28,7 +27,6 @@ const login = async (req, res) => {
       user.password
     );
 
-    console.log(validatedPassword);
     if (!validatedPassword) {
       return res.status(401).send({
         isValid: false,
