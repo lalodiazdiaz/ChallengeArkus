@@ -34,7 +34,7 @@ function Users() {
     validate,
     onSubmit: (values) => {
       console.log(values);
-      createUser({data: values})
+      createUser({ data: values })
         .then((result) => {
           console.log(result);
           Swal.fire({
@@ -47,7 +47,7 @@ function Users() {
         })
         .catch((err) => {});
 
-      // formik.resetForm();
+      formik.resetForm();
     },
   });
   return (

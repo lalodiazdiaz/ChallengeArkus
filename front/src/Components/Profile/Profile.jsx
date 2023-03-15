@@ -21,7 +21,7 @@ function Profile() {
 
   return (
     <div className=" flex bg-slate-600 h-full w-full justify-center items-center flex-col">
-      <div className="w-3/4" onClick={saveChange}>
+      <div className="w-3/4">
         <div className="md:flex items-center mt-12">
           <div className="w-full md:w-1/2 flex flex-col">
             <label className="font-semibold leading-none text-white">
@@ -78,7 +78,10 @@ function Profile() {
         </div>
 
         <div className="flex items-center justify-end w-full">
-          <button className=" w-52 mt-9 font-semibold leading-none text-white p-2.5 bg-red-600 rounded hover:bg-red-800 flex justify-center text-center items-center">
+          <button
+            onClick={saveChange}
+            className=" w-52 mt-9 font-semibold leading-none text-white p-2.5 bg-red-600 rounded hover:bg-red-800 flex justify-center text-center items-center"
+          >
             <FolderPlusIcon className="h-5 w-6 text-white mr-2 " /> Save
           </button>
         </div>

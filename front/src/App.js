@@ -28,7 +28,6 @@ function App() {
             path="/homeAdmin/"
             element={
               <ProtectedRoute>
-                {" "}
                 <AccountList />
               </ProtectedRoute>
             }
@@ -37,7 +36,6 @@ function App() {
             path="/homeAdmin/accounts"
             element={
               <ProtectedRoute>
-                {" "}
                 <Account />
               </ProtectedRoute>
             }

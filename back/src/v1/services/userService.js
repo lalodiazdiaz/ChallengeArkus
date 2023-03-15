@@ -2,7 +2,6 @@ const userModel = require("../models/userSchema");
 const bycrypt = require("bcryptjs");
 
 async function addUser(data) {
-  console.log(data);
   const user = new userModel(data);
   const addedUser = user.save();
   return addedUser;

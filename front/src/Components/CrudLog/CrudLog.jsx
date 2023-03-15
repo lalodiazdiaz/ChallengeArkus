@@ -2,6 +2,7 @@ import { FolderPlusIcon } from "@heroicons/react/24/outline";
 import { useFormik } from "formik";
 import React from "react";
 import Swal from "sweetalert2";
+import { createMove } from "../../Services/LogTeam";
 
 const validate = (values) => {
   const errors = {};
@@ -31,14 +32,19 @@ function CrudLog() {
     },
     validate,
     onSubmit: (values) => {
-      console.log(values);
-      Swal.fire({
-        position: "center",
-        icon: "success",
-        title: "New move registered",
-        showConfirmButton: false,
-        timer: 1500,
-      });
+      createMove(values)
+        .then((result) => {
+          console.log(result);
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "New move registered",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        })
+        .catch((err) => {});
+
       formik.resetForm();
     },
   });

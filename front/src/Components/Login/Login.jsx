@@ -44,7 +44,6 @@ function Login() {
     onSubmit: (values) => {
       login(values.email, values.password)
         .then((result) => {
-          console.log(result);
           if (result.isValid) {
             localStorage.setItem("rol", result.data.range);
             localStorage.setItem("Token", result.data.token);
@@ -60,17 +59,17 @@ function Login() {
             } else {
               navigation("/homeAdmin");
             }
-          } else {
-            Swal.fire({
-              position: "center",
-              icon: "error",
-              html: " <p>Welcome!</p>",
-              showConfirmButton: false,
-              timer: 1500,
-            });
           }
         })
-        .catch((err) => {});
+        .catch((err) => {
+          Swal.fire({
+            position: "center",
+            icon: "error",
+            html: " <p>Error!</p>",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        });
     },
   });
 
