@@ -2,8 +2,20 @@ const userDTO = require("../controllers/DTO/userDTO");
 const userModel = require("../models/userSchema");
 const userService = require("../services/userService");
 
+async function findById(id) {
+  const user = await usersModel.findById(id);
+  return user;
+}
+
 const createdUser = async (req, res) => {
   try {
+    const idUser = jwt.verify(
+      req.headers.authorization.split(" ")[1],
+      process.env.TOKEN_SECRET
+    );
+    const { range } = await findById(idUser);
+    req.body.rangeUser = range;
+
     const validatedData = await userDTO.inputCreateUserDTO(req.body);
     if (validatedData.isValid === false)
       return res.status(422).send(validatedData);
