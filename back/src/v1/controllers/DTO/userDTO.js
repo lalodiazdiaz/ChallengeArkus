@@ -3,14 +3,44 @@ const joi = require("joi");
 function inputCreateUserDTO(data) {
   console.log(data);
   try {
+
+    //esquema para agregar usuarios admins y super dependiendo el rango
     const schema = joi.object({
-      name: joi.string().required(),
-      email: joi.string().email().required(),
-      range: joi.string().required(),
-      password: joi.string().required(),
-      englishLevel: joi.string().optional(),
-      techKnowledge: joi.string().optional(),
-      CV: joi.string().uri().optional(),
+      rangeUser: joi.string().valid("admin", "user", "superuser"),
+      data: joi
+        .any()
+        .when(
+          "rangeUser",
+          {
+            is: "admin",
+            then: joi
+              .object({
+                name: joi.string().required(),
+                email: joi.string().email().required(),
+                range: joi.string().valid("user").required(),
+                password: joi.string().required(),
+                englishLevel: joi.string().optional(),
+                techKnowledge: joi.string().optional(),
+                CV: joi.string().uri().optional(),
+              })
+              .unknown(false),
+          },
+          {
+            is: "superuser",
+            then: joi
+              .object({
+                name: joi.string().required(),
+                email: joi.string().email().required(),
+                range: joi.string().valid("admin", "user").required(),
+                password: joi.string().required(),
+                englishLevel: joi.string().optional(),
+                techKnowledge: joi.string().optional(),
+                CV: joi.string().uri().optional(),
+              })
+              .unknown(false),
+          }
+        )
+        .required(),
     });
 
     const validatedData = schema.validate(data);

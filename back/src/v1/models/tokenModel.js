@@ -8,4 +8,4 @@ const tokenSchema = mongoose.Schema({
   token: { type: String },
 });
 
-module.exports = mongoose.models("tokens", tokenSchema);
+module.exports = mongoose.model("tokens", tokenSchema);

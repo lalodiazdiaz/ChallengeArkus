@@ -3,7 +3,7 @@ const joi = require("joi");
 function inputLoginDTO(data) {
   try {
     const schema = joi.object({
-      email: joi.string().email().required,
+      email: joi.string().email().required(),
       password: joi.string().required(),
     });
 

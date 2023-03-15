@@ -5,17 +5,17 @@ const bycrypt = require("bcryptjs");
 
 const login = async (req, res) => {
   try {
+    console.log(req.body);
     const validatedData = await sessionDTO.inputLoginDTO(req.body);
 
     if (validatedData.isValid === false) {
       return res.status(404).send({
         isValid: false,
-        message: "User not found",
-        data: null,
+        message: "User not valid",
+        data: validatedData,
       });
     }
-
-    const user = await userModel.findOne(validatedData.email);
+    const user = await userModel.findOne({ email: validatedData.email });
     if (!user) {
       return res.status(404).send({
         isValid: false,
@@ -23,12 +23,12 @@ const login = async (req, res) => {
         data: null,
       });
     }
-
     const validatedPassword = await bycrypt.compare(
-      validatedData.passwword,
+      validatedData.password,
       user.password
     );
 
+    console.log(validatedPassword);
     if (!validatedPassword) {
       return res.status(401).send({
         isValid: false,
