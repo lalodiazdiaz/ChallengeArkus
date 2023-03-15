@@ -13,6 +13,7 @@ function OptionsAdmin() {
 
   const logOut = () => {
     localStorage.removeItem("rol");
+    localStorage.removeItem("Token");
     navigate("../", { replace: true });
   };
 

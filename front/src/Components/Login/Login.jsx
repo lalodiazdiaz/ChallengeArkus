@@ -8,6 +8,7 @@ import {
   EyeSlashIcon,
 } from "@heroicons/react/24/outline";
 import { ROL } from "../../constants";
+import login from "../../Services/LoginService";
 
 const validate = (values) => {
   const errors = {};
@@ -41,19 +42,26 @@ function Login() {
     },
     validate,
     onSubmit: (values) => {
-      Swal.fire({
-        position: "center",
-        icon: "success",
-        html: " <p>Welcome!</p>",
-        showConfirmButton: false,
-        timer: 1500,
-      });
-      localStorage.setItem("rol", "super");
-      if (localStorage.getItem("rol") === ROL.user) {
-        navigation("/homeUser");
-      } else {
-        navigation("/homeAdmin");
-      }
+      login(values.email, values.password)
+        .then((result) => {
+          if (result.isValid) {
+            localStorage.setItem("rol", result.data.range);
+            localStorage.setItem("Token", result.data.token);
+            Swal.fire({
+              position: "center",
+              icon: "success",
+              html: " <p>Welcome!</p>",
+              showConfirmButton: false,
+              timer: 1500,
+            });
+            if (localStorage.getItem("rol") === ROL.user) {
+              navigation("/homeUser");
+            } else {
+              navigation("/homeAdmin");
+            }
+          }
+        })
+        .catch((err) => {});
     },
   });
 
