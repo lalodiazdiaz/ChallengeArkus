@@ -3,7 +3,6 @@ const logTeamModel = require("../models/logTeamsSchema");
 const { createLog } = require("../services/logTeamsService");
 
 const postLog = async (req, res) => {
-  console.log(req.body);
   try {
     const validatedData = logTeamsDTO.inputCreateLog(req.body);
     if (validatedData.isValid === false) {

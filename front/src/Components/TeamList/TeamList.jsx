@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { PlusCircleIcon } from "@heroicons/react/24/outline";
 import Swal from "sweetalert2";
 import TeamCard from "../TeamCard/TeamCard";
@@ -16,18 +16,6 @@ function TeamList() {
       confirmButtonColor: "#3085d6",
       confirmButtonText: "Add new team",
       showLoaderOnConfirm: true,
-      preConfirm: (login) => {
-        return fetch(`//api.github.com/users/${login}`)
-          .then((response) => {
-            if (!response.ok) {
-              throw new Error(response.statusText);
-            }
-            return response.json();
-          })
-          .catch((error) => {
-            Swal.showValidationMessage(`Request failed: ${error}`);
-          });
-      },
       allowOutsideClick: () => !Swal.isLoading(),
     }).then((result) => {
       if (result.isConfirmed) {
@@ -53,9 +41,7 @@ function TeamList() {
             <th
               scope="col"
               className="px-6 py-4 font-medium text-gray-900 text-center"
-            >
-              Members
-            </th>
+            ></th>
             <th
               scope="col"
               className="px-6 py-4 font-medium text-gray-900"

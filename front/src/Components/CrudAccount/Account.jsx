@@ -27,7 +27,6 @@ function Account() {
     },
     validate,
     onSubmit: (values) => {
-      console.log(values);
       createAccount(values)
         .then((result) => {
           console.log(result);

@@ -1,12 +1,10 @@
 const joi = require("joi");
 
 function inputCreateUserDTO(data) {
-  console.log(data);
   try {
-
     //esquema para agregar usuarios admins y super dependiendo el rango
     const schema = joi.object({
-      rangeUser: joi.string().valid("admin", "user", "superuser"),
+      rangeUser: joi.string().valid("admin", "user", "super"),
       data: joi
         .any()
         .when(
@@ -26,7 +24,7 @@ function inputCreateUserDTO(data) {
               .unknown(false),
           },
           {
-            is: "superuser",
+            is: "super",
             then: joi
               .object({
                 name: joi.string().required(),
@@ -44,6 +42,7 @@ function inputCreateUserDTO(data) {
     });
 
     const validatedData = schema.validate(data);
+
     if (validatedData.error) {
       return {
         isValid: false,

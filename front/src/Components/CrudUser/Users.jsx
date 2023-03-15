@@ -2,17 +2,16 @@ import { FolderPlusIcon } from "@heroicons/react/24/outline";
 import { useFormik } from "formik";
 import React from "react";
 import Swal from "sweetalert2";
+import { createUser } from "../../Services/UserServices";
 const validate = (values) => {
   const errors = {};
-  if (!values.userName) {
-    errors.userName = "Required";
+  if (!values.name) {
+    errors.name = "Required";
   }
-  if (!values.userEmail) {
-    errors.userEmail = "Required";
-  } else if (
-    !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.userEmail)
-  ) {
-    errors.userEmail = "Invalid email address";
+  if (!values.email) {
+    errors.email = "Required";
+  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
+    errors.email = "Invalid email address";
   }
   if (!values.password) {
     errors.password = "Required";
@@ -24,23 +23,31 @@ const validate = (values) => {
 function Users() {
   const formik = useFormik({
     initialValues: {
-      userName: "",
-      userEmail: "",
+      name: "",
+      email: "",
       password: "",
-      team: "",
-      rol: "user",
+      range: "user",
+      englishLevel: "",
+      techKnowledge: "",
+      CV: "",
     },
     validate,
     onSubmit: (values) => {
       console.log(values);
-      Swal.fire({
-        position: "center",
-        icon: "success",
-        title: "New user has been add",
-        showConfirmButton: false,
-        timer: 1500,
-      });
-      formik.resetForm();
+      createUser({data: values})
+        .then((result) => {
+          console.log(result);
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "New user has been add",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        })
+        .catch((err) => {});
+
+      // formik.resetForm();
     },
   });
   return (
@@ -52,15 +59,15 @@ function Users() {
               Name
             </label>
             <input
-              id="userName"
-              name="userName"
+              id="name"
+              name="name"
               type="text"
               onChange={formik.handleChange}
-              value={formik.values.userName}
+              value={formik.values.name}
               className="leading-none  text-gray-900 p-2.5  focus:border-blue-700 mt-4 bg-gray-100 border rounded border-gray-200"
             />
-            {formik.errors.userName ? (
-              <div className="mt-2">{formik.errors.userName}</div>
+            {formik.errors.name ? (
+              <div className="mt-2">{formik.errors.name}</div>
             ) : null}
           </div>
           <div className="w-full md:w-1/2 flex flex-col md:ml-6 md:mt-0 mt-4 text-white">
@@ -69,14 +76,14 @@ function Users() {
             </label>
             <input
               type="email"
-              id="userEmail"
-              name="userEmail"
+              id="email"
+              name="email"
               onChange={formik.handleChange}
-              value={formik.values.userEmail}
+              value={formik.values.email}
               className="leading-none text-gray-900 p-2.5 focus:outline-none focus:border-blue-700 mt-4 bg-gray-100 border rounded border-gray-200"
             />
-            {formik.errors.userEmail ? (
-              <div className="mt-2">{formik.errors.userEmail}</div>
+            {formik.errors.email ? (
+              <div className="mt-2">{formik.errors.email}</div>
             ) : null}
           </div>
         </div>
@@ -101,10 +108,10 @@ function Users() {
             <label className="font-semibold leading-none text-white">Rol</label>
             <select
               className="leading-none text-gray-900 p-2.5 focus:outline-none focus:border-blue-700 mt-4 bg-gray-100 border rounded border-gray-200"
-              value={formik.values.rol}
+              value={formik.values.range}
               onChange={formik.handleChange}
-              id="rol"
-              name="rol"
+              id="range"
+              name="range"
             >
               <option value="user">User</option>
               <option value="admin">Admin</option>
@@ -117,8 +124,12 @@ function Users() {
               English level
             </label>
             <input
+              id="englishLevel"
+              name="englishLevel"
               type="text"
               className="leading-none text-gray-900 p-2.5  mt-4 bg-gray-100 border rounded border-gray-200"
+              onChange={formik.handleChange}
+              value={formik.values.englishLevel}
             />
           </div>
           <div className="w-full md:w-1/2 flex flex-col md:ml-6 md:mt-0 mt-4">
@@ -126,6 +137,10 @@ function Users() {
               Resume link
             </label>
             <input
+              id="CV"
+              name="CV"
+              onChange={formik.handleChange}
+              value={formik.values.CV}
               type="url"
               className="leading-none text-gray-900 p-2.5  mt-4 bg-gray-100 border rounded border-gray-200"
             />
@@ -138,6 +153,10 @@ function Users() {
               Technical knowledge
             </label>
             <textarea
+              id="techKnowledge"
+              name="techKnowledge"
+              onChange={formik.handleChange}
+              value={formik.values.techKnowledge}
               type="text"
               className="h-20 text-base leading-none text-gray-900 p-3  mt-4 bg-gray-100 border rounded border-gray-200 resize-none"
             ></textarea>
@@ -145,7 +164,10 @@ function Users() {
         </div>
 
         <div className="flex items-center justify-end w-full">
-          <button className=" w-52 mt-9 font-semibold leading-none text-white p-2.5 bg-red-600 rounded hover:bg-red-800 flex justify-center text-center items-center">
+          <button
+            type="submit"
+            className=" w-52 mt-9 font-semibold leading-none text-white p-2.5 bg-red-600 rounded hover:bg-red-800 flex justify-center text-center items-center"
+          >
             <FolderPlusIcon className="h-5 w-6 text-white mr-2 " /> Save
           </button>
         </div>

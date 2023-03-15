@@ -1,9 +1,15 @@
 const userDTO = require("../controllers/DTO/userDTO");
 const userModel = require("../models/userSchema");
 const userService = require("../services/userService");
-
+const jwt = require("jsonwebtoken");
+require("dotenv").config();
 async function findById(id) {
-  const user = await usersModel.findById(id);
+  const user = await userModel.findById(id);
+  return user;
+}
+
+async function findByMail(email) {
+  const user = await userModel.findOne({ email });
   return user;
 }
 
@@ -11,7 +17,7 @@ const createdUser = async (req, res) => {
   try {
     const idUser = jwt.verify(
       req.headers.authorization.split(" ")[1],
-      process.env.TOKEN_SECRET
+      process.env.TOKEN
     );
     const { range } = await findById(idUser);
     req.body.rangeUser = range;
@@ -20,11 +26,9 @@ const createdUser = async (req, res) => {
     if (validatedData.isValid === false)
       return res.status(422).send(validatedData);
 
-    console.log(validatedData.email);
-    const ifUserExists = await userModel.findOne({
-      email: validatedData.email,
-    });
+    const ifUserExists = await findByMail(validatedData.data.email);
     if (ifUserExists) return res.status(409).send("User already exists");
+
     const data = await userService.userRegistration(validatedData);
     return res.status(200).send({
       isValid: data.isValid,
@@ -34,7 +38,7 @@ const createdUser = async (req, res) => {
   } catch (error) {
     return res.status(500).send({
       isValid: false,
-      message: "hvkjh",
+      message: "error server",
       data: null,
     });
   }
