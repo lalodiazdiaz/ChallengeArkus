@@ -1,6 +1,6 @@
 const accountDTO = require("./DTO/accountDTO");
 const accountModel = require("../models/accountSchema");
-const { createAccount } = require("../services/accountService");
+const { createAccount, getAllAccounts } = require("../services/accountService");
 
 const postAccount = async (req, res) => {
   try {
@@ -34,4 +34,21 @@ const postAccount = async (req, res) => {
   }
 };
 
-module.exports = { postAccount };
+const getAccounts = async (req, res) => {
+  try {
+    const data = await getAllAccounts();
+    return res.status(200).send({
+      isValid: data.isValid,
+      message: data.message,
+      data: data.data,
+    });
+  } catch (error) {
+    res.status(500).send({
+      isValid: false,
+      message: error,
+      data: null,
+    });
+  }
+};
+
+module.exports = { postAccount, getAccounts };
