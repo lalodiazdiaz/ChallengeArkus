@@ -1,6 +1,6 @@
 const logTeamsDTO = require("./DTO/logTeamsDTO");
 const logTeamModel = require("../models/logTeamsSchema");
-const { createLog } = require("../services/logTeamsService");
+const { createLog, getAllMoves } = require("../services/logTeamsService");
 
 const postLog = async (req, res) => {
   try {
@@ -25,4 +25,21 @@ const postLog = async (req, res) => {
   }
 };
 
-module.exports = { postLog };
+const getMoves = async (req, res) => {
+  try {
+    const data = await getAllMoves();
+    return res.status(200).send({
+      isValid: data.isValid,
+      message: data.message,
+      data: data.data,
+    });
+  } catch (error) {
+    res.status(500).send({
+      isValid: false,
+      message: error,
+      data: null,
+    });
+  }
+};
+
+module.exports = { postLog, getMoves };

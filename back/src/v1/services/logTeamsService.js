@@ -6,4 +6,18 @@ async function createLog(data) {
   return result;
 }
 
-module.exports = { createLog };
+async function find(data, parameters) {
+  const accounts = await logTeamsModel.find(data, parameters);
+  return accounts;
+}
+
+async function getAllMoves() {
+  const accounts = await find({}, { __v: 0 });
+
+  return {
+    isValid: true,
+    message: "Accounts retrieved successfully",
+    data: accounts,
+  };
+}
+module.exports = { createLog, getAllMoves };
