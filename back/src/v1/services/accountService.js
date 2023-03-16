@@ -10,6 +10,7 @@ async function find(data, parameters) {
   const accounts = await accountModel.find(data, parameters);
   return accounts;
 }
+
 async function getAllAccounts() {
   const accounts = await find({}, { __v: 0 });
 

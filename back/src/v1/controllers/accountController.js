@@ -4,13 +4,11 @@ const { createAccount, getAllAccounts } = require("../services/accountService");
 
 const postAccount = async (req, res) => {
   try {
-    //   Validar informacion
     const validatedData = accountDTO.inputCreateAccount(req.body);
     if (validatedData.isValid === false) {
       return res.status(422).send(validatedData);
     }
 
-    //   validar si existe
     const ifExistsAccount = await accountModel.findOne({
       accountName: validatedData.accountName,
     });

@@ -7,6 +7,11 @@ async function addUser(data) {
   return addedUser;
 }
 
+async function find(data, parameters) {
+  const accounts = await userModel.find(data);
+  return accounts;
+}
+
 async function userRegistration(data) {
   const encryptedPassword = await bycrypt.hash(data.data.password, 10);
   data.data.password = encryptedPassword;
@@ -19,4 +24,14 @@ async function userRegistration(data) {
   };
 }
 
-module.exports = { userRegistration };
+async function getAllUsers() {
+  const user = await find({});
+
+  return {
+    isValid: true,
+    message: "Accounts retrieved successfully",
+    data: user,
+  };
+}
+
+module.exports = { userRegistration, getAllUsers };

@@ -44,4 +44,20 @@ const createdUser = async (req, res) => {
   }
 };
 
-module.exports = { createdUser };
+const getUsers = async (req, res) => {
+  try {
+    const data = await userService.getAllUsers();
+    return res.status(200).send({
+      isValid: data.isValid,
+      message: data.message,
+      data: data.data,
+    });
+  } catch (error) {
+    res.status(500).send({
+      isValid: false,
+      message: error,
+      data: null,
+    });
+  }
+};
+module.exports = { createdUser, getUsers };
