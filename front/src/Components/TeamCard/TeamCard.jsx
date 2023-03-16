@@ -2,7 +2,7 @@ import { TrashIcon } from "@heroicons/react/24/outline";
 import React from "react";
 import Swal from "sweetalert2";
 
-function TeamCard() {
+function TeamCard(data) {
   const deleteTeam = () => {
     Swal.fire({
       title: "Are you sure?",
@@ -28,7 +28,7 @@ function TeamCard() {
     <tr className="hover:bg-gray-50">
       <th className="flex gap-3 px-6 py-4 font-normal text-gray-900">
         <div className="text-sm">
-          <div className="font-medium text-gray-700">Alpha dinamita</div>
+          <div className="font-medium text-gray-700">{data.data.teamName}</div>
         </div>
       </th>
 

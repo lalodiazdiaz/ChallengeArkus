@@ -7,7 +7,7 @@ async function addUser(data) {
   return addedUser;
 }
 
-async function find(data, parameters) {
+async function find(data) {
   const accounts = await userModel.find(data);
   return accounts;
 }
