@@ -33,7 +33,6 @@ function Users() {
     },
     validate,
     onSubmit: (values) => {
-      console.log(values);
       createUser({ data: values })
         .then((result) => {
           console.log(result);

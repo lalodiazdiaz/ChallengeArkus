@@ -15,7 +15,6 @@ function AccountList() {
       })
       .catch((err) => {});
   }, []);
-  console.log(accounts);
 
   return (
     <div className=" flex overflow-hidden w-[100%] justify-center items-center rounded-lg mt-4">
@@ -54,8 +53,8 @@ function AccountList() {
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-100 border-t border-gray-100">
-            {accounts.map((account) => (
-              <AccountCard data={account} />
+            {accounts.map((account, i) => (
+              <AccountCard data={account} key={i} />
             ))}
           </tbody>
         </table>

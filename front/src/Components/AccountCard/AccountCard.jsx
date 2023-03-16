@@ -48,7 +48,11 @@ function AccountCard(data) {
           <button type="button" onClick={deleteAccount}>
             <TrashIcon className="h-6 w-6 text-red-600" />
           </button>
-          <NavLink to={"/homeAdmin/accounts"} x-data="{ tooltip: 'Edite' }">
+          <NavLink
+            to={"/homeAdmin/accounts"}
+            x-data="{ tooltip: 'Edite' }"
+            className="hidden"
+          >
             <PencilSquareIcon className="h-6 w-6 text-blue-500" />
           </NavLink>
         </div>
