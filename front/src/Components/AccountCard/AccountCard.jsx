@@ -3,7 +3,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import Swal from "sweetalert2";
 
-function AccountCard() {
+function AccountCard(data) {
   const deleteAccount = () => {
     Swal.fire({
       title: "Are you sure?",
@@ -29,15 +29,17 @@ function AccountCard() {
     <tr className="hover:bg-gray-50">
       <th className="flex gap-3 px-6 py-4 font-normal text-gray-900">
         <div className="text-sm">
-          <div className="font-medium text-gray-700">Apple</div>
+          <div className="font-medium text-gray-700">
+            {data.data.accountName}
+          </div>
         </div>
       </th>
 
-      <td className="px-6 py-4">Steven Jobs</td>
+      <td className="px-6 py-4"> {data.data.client}</td>
       <td className="px-6 py-4">
         <div className="flex gap-2">
           <span className="inline-flex items-center  rounded-full px-2 py-1 ">
-            Erick Mejia
+            {data.data.operationManager}
           </span>
         </div>
       </td>
