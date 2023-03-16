@@ -106,7 +106,7 @@ function Profile() {
             </div>
           </div>
 
-          <div className="flex items-center justify-end w-full hidden">
+          <div className=" items-center justify-end w-full hidden">
             <button
               onClick={saveChange}
               className=" w-52 mt-9 font-semibold leading-none text-white p-2.5 bg-red-600 rounded hover:bg-red-800 flex justify-center text-center items-center"

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { PlusCircleIcon } from "@heroicons/react/24/outline";
+import { FolderPlusIcon, PlusCircleIcon } from "@heroicons/react/24/outline";
 import Swal from "sweetalert2";
 import TeamCard from "../TeamCard/TeamCard";
 import { createTeam, getAllTeams } from "../../Services/TeamsService";
@@ -79,10 +79,10 @@ function TeamList() {
           </div>
           <button
             type="submit"
-            className="flex justify-center items-center self-end mi-7 text-center w-[12%] bg-red-500 h-11 rounded"
+            className="flex justify-center items-center self-end mi-7 text-center w-[12%] bg-red-600 hover:bg-red-800 h-11 rounded"
           >
-            <PlusCircleIcon className="h-6 w-6 text-green-500 text-center"></PlusCircleIcon>
-            <span className="ml-2 text-sm tracking-wide truncate mr-1  text-white ">
+            <FolderPlusIcon className="h-6 w-6 text-white text-center "></FolderPlusIcon>
+            <span className="ml-2 text-sm tracking-wide truncate mr-1  text-white  font-bold">
               Save
             </span>
           </button>
