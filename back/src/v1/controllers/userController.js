@@ -8,6 +8,10 @@ async function findById(id) {
   return user;
 }
 
+async function findById(id) {
+  const user = await userModel.findById(id);
+  return user;
+}
 async function findByMail(email) {
   const user = await userModel.findOne({ email });
   return user;
@@ -60,4 +64,30 @@ const getUsers = async (req, res) => {
     });
   }
 };
-module.exports = { createdUser, getUsers };
+
+const getOneUser = async (req, res) => {
+  try {
+    const validatedData = await userDTO.inputGetOneUserAndDeleteUser(req.query);
+    if (validatedData.isValid === false)
+      return res.status(422).send(validatedData);
+
+    const checkedUser = await findById(validatedData.idUser);
+    if (!checkedUser) return res.status(409).send("The user doesn't exist");
+
+    const data = await userService.getOneUser(checkedUser);
+
+    return res.status(200).send({
+      isValid: data.isValid,
+      message: data.message,
+      data: data.data,
+    });
+  } catch (error) {
+    return res.status(500).send({
+      isValid: false,
+      message: error,
+      data: null,
+    });
+  }
+};
+
+module.exports = { createdUser, getUsers, getOneUser };

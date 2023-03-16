@@ -45,8 +45,12 @@ function Login() {
       login(values.email, values.password)
         .then((result) => {
           if (result.isValid) {
+            console.log(result);
             localStorage.setItem("rol", result.data.range);
             localStorage.setItem("Token", result.data.token);
+            if (result.data.range === ROL.user) {
+              localStorage.setItem("idUser", result.data.idUser);
+            }
             Swal.fire({
               position: "center",
               icon: "success",

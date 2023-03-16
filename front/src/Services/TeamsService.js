@@ -10,10 +10,11 @@ if (local) {
 }
 
 export const createTeam = async (data) => {
+  console.log(data);
   const resTeam = await axios.post(`${API}/teams/createTeam`, data, {
     headers: { Authorization: authStr },
   });
-  return resTeam.data;
+  return resTeam;
 };
 
 export const getAllTeams = async () => {

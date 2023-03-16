@@ -29,9 +29,25 @@ async function getAllUsers() {
 
   return {
     isValid: true,
-    message: "Accounts retrieved successfully",
+    message: "Users retrieved successfully",
     data: user,
   };
 }
 
-module.exports = { userRegistration, getAllUsers };
+async function getOneUser(data) {
+  const userData = {
+    name: data.name,
+    email: data.email,
+    range: data.range,
+    englishLevel: data.englishLevel,
+    techKnowledge: data.techKnowledge,
+    CV: data.CV,
+  };
+
+  return {
+    isValid: true,
+    message: "User retrieved successfully",
+    data: userData,
+  };
+}
+module.exports = { userRegistration, getAllUsers, getOneUser };

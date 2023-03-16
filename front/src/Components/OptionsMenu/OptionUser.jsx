@@ -10,6 +10,8 @@ function OptionUser() {
 
   const logOut = () => {
     localStorage.removeItem("rol");
+    localStorage.removeItem("Token");
+    localStorage.removeItem("idUser");
     navigate("../", { replace: true });
     console.log("clean");
   };

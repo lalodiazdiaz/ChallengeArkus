@@ -22,3 +22,10 @@ export const getAllUser = async () => {
   });
   return User.data;
 };
+
+export const getOneUser = async (id) => {
+  const user = await axios.get(`${API}/users/getOneUser?idUser=${id}`, {
+    headers: { Authorization: authStr },
+  });
+  return user.data;
+};
