@@ -27,7 +27,7 @@ function Users() {
       name: "",
       email: "",
       password: "",
-      range: "user",
+      range: "",
       englishLevel: "",
       techKnowledge: "",
       CV: "",
@@ -124,6 +124,7 @@ function Users() {
             >
               {localStorage.getItem("rol") === ROL.super ? (
                 <>
+                  <option value="">--Please choose an user--</option>
                   <option value="user">User</option>
                   <option value="admin">Admin</option>
                 </>
