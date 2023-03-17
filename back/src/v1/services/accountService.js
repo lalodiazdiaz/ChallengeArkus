@@ -21,4 +21,18 @@ async function getAllAccounts() {
   };
 }
 
-module.exports = { createAccount, getAllAccounts };
+async function deleteA(id) {
+  const deletedTeam = await accountModel.findOneAndDelete(id);
+  return deletedTeam;
+}
+
+async function deleteOneAccount(data) {
+  const deletedTeam = await deleteA({ _id: data.idAccount });
+
+  return {
+    isValid: true,
+    message: "Account deleted successfully",
+    data: deletedTeam,
+  };
+}
+module.exports = { createAccount, getAllAccounts, deleteOneAccount };

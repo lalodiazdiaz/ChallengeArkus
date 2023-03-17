@@ -1,6 +1,11 @@
 const accountDTO = require("./DTO/accountDTO");
 const accountModel = require("../models/accountSchema");
-const { createAccount, getAllAccounts } = require("../services/accountService");
+const {
+  createAccount,
+  getAllAccounts,
+  deleteOneAccount,
+} = require("../services/accountService");
+const accountSchema = require("../models/accountSchema");
 
 const postAccount = async (req, res) => {
   try {
@@ -49,4 +54,25 @@ const getAccounts = async (req, res) => {
   }
 };
 
-module.exports = { postAccount, getAccounts };
+const deleteAccount = async (req, res) => {
+  try {
+    const validatedData = await accountDTO.inputDelete(req.query);
+    if (validatedData.isValid === false)
+      return res.status(422).send(validatedData);
+
+    const data = await deleteOneAccount(validatedData);
+
+    return res.status(200).send({
+      isValid: data.isValid,
+      message: data.message,
+      data: data.data,
+    });
+  } catch (error) {
+    return res.status(500).send({
+      isValid: false,
+      message: error,
+      data: null,
+    });
+  }
+};
+module.exports = { postAccount, getAccounts, deleteAccount };
