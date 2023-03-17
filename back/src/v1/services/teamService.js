@@ -21,13 +21,13 @@ async function getAllTeams() {
   };
 }
 
-async function deleteTeam(id) {
+async function deleteT(id) {
   const deletedTeam = await teamModel.findOneAndDelete(id);
   return deletedTeam;
 }
 
 async function deleteTeam(data) {
-  const deletedTeam = await deleteTeam({ _id: data.idTeam });
+  const deletedTeam = await deleteT({ _id: data.idTeam });
 
   return {
     isValid: true,

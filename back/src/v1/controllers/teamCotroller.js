@@ -52,7 +52,7 @@ const getTeams = async (req, res) => {
 
 const deleteTeam = async (req, res) => {
   try {
-    const validatedData = await teamDTO.inputDelete(req.body);
+    const validatedData = await teamDTO.inputDelete(req.query);
     if (validatedData.isValid === false)
       return res.status(422).send(validatedData);
 
