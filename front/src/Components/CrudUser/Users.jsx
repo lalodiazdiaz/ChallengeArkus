@@ -3,6 +3,7 @@ import { useFormik } from "formik";
 import React from "react";
 import Swal from "sweetalert2";
 import { createUser } from "../../Services/UserServices";
+import { ROL } from "../../constants";
 const validate = (values) => {
   const errors = {};
   if (!values.name) {
@@ -121,8 +122,18 @@ function Users() {
               id="range"
               name="range"
             >
-              <option value="user">User</option>
-              <option value="admin">Admin</option>
+              {localStorage.getItem("rol") === ROL.super ? (
+                <>
+                  <option value="user">User</option>
+                  <option value="admin">Admin</option>
+                </>
+              ) : (
+                <>
+                  <option selected value="user">
+                    User
+                  </option>
+                </>
+              )}
             </select>
           </div>
         </div>
