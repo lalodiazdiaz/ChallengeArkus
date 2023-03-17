@@ -38,7 +38,16 @@ function Account() {
             timer: 1500,
           });
         })
-        .catch((err) => {});
+        .catch((err) => {
+          Swal.fire({
+            icon: "error",
+            showConfirmButton: false,
+            title: "Oops...",
+            text: "Something went wrong!",
+            footer: err.response.data,
+            timer: 1500,
+          });
+        });
     },
   });
   return (
@@ -101,7 +110,10 @@ function Account() {
         </div>
 
         <div className="flex items-center justify-end w-full">
-          <button className=" w-52 mt-9 font-semibold leading-none text-white p-2.5 bg-red-600 rounded hover:bg-red-800 flex justify-center text-center items-center">
+          <button
+            type="submit"
+            className=" w-52 mt-9 font-semibold leading-none text-white p-2.5 bg-red-600 rounded hover:bg-red-800 flex justify-center text-center items-center"
+          >
             <FolderPlusIcon className="h-5 w-6 text-white mr-2 " /> Save
           </button>
         </div>

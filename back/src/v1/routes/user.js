@@ -11,6 +11,7 @@ app.post(
   userController.createdUser
 );
 app.get("/getUsers", authorization, userController.getUsers);
-app.get('/getOneUser', authorization, userController.getOneUser);
+app.get("/getOneUser", authorization, userController.getOneUser);
+app.delete("/deleteUser", authorization, userController.deleteUser);
 
 module.exports = app;

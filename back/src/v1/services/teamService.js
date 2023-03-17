@@ -21,4 +21,19 @@ async function getAllTeams() {
   };
 }
 
-module.exports = { createTeam, getAllTeams };
+async function deleteTeam(id) {
+  const deletedTeam = await teamModel.findOneAndDelete(id);
+  return deletedTeam;
+}
+
+async function deleteTeam(data) {
+  const deletedTeam = await deleteTeam({ _id: data.idTeam });
+
+  return {
+    isValid: true,
+    message: "Team deleted successfully",
+    data: deletedTeam,
+  };
+}
+
+module.exports = { createTeam, getAllTeams, deleteTeam };

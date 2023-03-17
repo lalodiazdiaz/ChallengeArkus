@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { FolderPlusIcon, PlusCircleIcon } from "@heroicons/react/24/outline";
+import { FolderPlusIcon } from "@heroicons/react/24/outline";
 import Swal from "sweetalert2";
 import TeamCard from "../TeamCard/TeamCard";
 import { createTeam, getAllTeams } from "../../Services/TeamsService";
@@ -38,7 +38,16 @@ function TeamList() {
             loading(true);
           }
         })
-        .catch((err) => {});
+        .catch((err) => {
+          Swal.fire({
+            icon: "error",
+            showConfirmButton: false,
+            title: "Oops...",
+            text: "Something went wrong!",
+            footer: err.response.data,
+            timer: 1500,
+          });
+        });
     },
   });
 
@@ -97,7 +106,7 @@ function TeamList() {
         </div>
       ) : (
         <table className="w-[90%] border-collapse bg-white text-left text-sm text-gray-500 rounded-t-lg">
-          <thead className="bg-gray-50">
+          <thead className="bg-gray-300">
             <tr>
               <th scope="col" className="px-6 py-4 font-medium text-gray-900">
                 Team Name

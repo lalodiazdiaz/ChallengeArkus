@@ -38,7 +38,14 @@ function CrudLog() {
         setLoading(false);
       })
       .catch((err) => {
-        console.log(err);
+        Swal.fire({
+          icon: "error",
+          showConfirmButton: false,
+          title: "Oops...",
+          text: "Something went wrong!",
+          footer: err.response.data,
+          timer: 1500,
+        });
       });
   }, []);
 

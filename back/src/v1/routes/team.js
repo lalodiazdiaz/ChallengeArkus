@@ -13,4 +13,6 @@ app.post(
 
 app.get("/getTeams", authorization, teamController.getTeams);
 
+app.delete("/deleteTeam", authorization, teamController.deleteTeam);
+
 module.exports = app;

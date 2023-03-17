@@ -28,11 +28,19 @@ function Profile() {
   useEffect(() => {
     getOneUser(idUser)
       .then((result) => {
-        console.log(result.data);
         setUserData(result.data);
         setLoading(false);
       })
-      .catch((err) => {});
+      .catch((err) => {
+        Swal.fire({
+          icon: "error",
+          showConfirmButton: false,
+          title: "Oops...",
+          text: "Something went wrong!",
+          footer: err.response.data,
+          timer: 1500,
+        });
+      });
   }, []);
 
   return (

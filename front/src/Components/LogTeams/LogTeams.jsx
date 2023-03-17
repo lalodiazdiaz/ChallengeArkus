@@ -26,7 +26,7 @@ function LogTeams() {
         </div>
       ) : (
         <table className="w-[90%] border-collapse bg-white text-left text-sm text-gray-500 rounded-t-lg">
-          <thead className="bg-gray-50">
+          <thead className="bg-gray-300">
             <tr>
               <th scope="col" className="px-6 py-4 font-medium text-gray-900">
                 User

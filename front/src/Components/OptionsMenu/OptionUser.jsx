@@ -13,7 +13,6 @@ function OptionUser() {
     localStorage.removeItem("Token");
     localStorage.removeItem("idUser");
     navigate("../", { replace: true });
-    console.log("clean");
   };
 
   return (
