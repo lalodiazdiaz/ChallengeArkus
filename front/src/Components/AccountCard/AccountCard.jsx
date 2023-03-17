@@ -7,7 +7,6 @@ function AccountCard({ data, onAction }) {
   const deleteAc = () => {
     Swal.fire({
       title: "Are you sure?",
-      text: data._id,
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",

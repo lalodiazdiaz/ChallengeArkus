@@ -3,6 +3,7 @@ import Swal from "sweetalert2";
 import { useFormik } from "formik";
 import { FolderPlusIcon } from "@heroicons/react/24/outline";
 import { createAccount } from "../../Services/AccountService";
+import { useNavigate } from "react-router-dom";
 
 const validate = (values) => {
   const errors = {};
@@ -19,6 +20,8 @@ const validate = (values) => {
 };
 
 function Account() {
+  const navigate = useNavigate();
+
   const formik = useFormik({
     initialValues: {
       accountName: "",
@@ -48,6 +51,7 @@ function Account() {
             timer: 1500,
           });
         });
+      formik.resetForm();
     },
   });
   return (

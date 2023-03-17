@@ -48,6 +48,7 @@ function TeamList() {
             timer: 1500,
           });
         });
+      formik.resetForm();
     },
   });
 
