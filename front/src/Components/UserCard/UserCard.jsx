@@ -9,7 +9,6 @@ function UserCard({ data, onAction }) {
   const deleteUser = () => {
     Swal.fire({
       title: "Are you sure?",
-      text: data._id,
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",

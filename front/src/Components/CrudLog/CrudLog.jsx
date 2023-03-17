@@ -65,7 +65,7 @@ function CrudLog() {
           Swal.fire({
             position: "center",
             icon: "success",
-            title: "New move registered",
+            html: "<p>New move registered</p>",
             showConfirmButton: false,
             timer: 1500,
           });

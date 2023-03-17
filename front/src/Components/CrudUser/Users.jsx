@@ -40,7 +40,7 @@ function Users() {
           Swal.fire({
             position: "center",
             icon: "success",
-            title: "New user has been add",
+            html: "<p>New user has been add</p>",
             showConfirmButton: false,
             timer: 1500,
           });
