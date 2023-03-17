@@ -125,7 +125,7 @@ function TeamList() {
           </thead>
           <tbody className="divide-y divide-gray-100 border-t border-gray-100">
             {teams.map((team, i) => (
-              <TeamCard key={i} data={team} />
+              <TeamCard key={i} data={team} onAction={updateList} />
             ))}
           </tbody>
         </table>

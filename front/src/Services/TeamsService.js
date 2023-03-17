@@ -22,3 +22,10 @@ export const getAllTeams = async () => {
   });
   return team.data;
 };
+
+export const deleteTeam = async (id) => {
+  const team = await axios.delete(`${API}/teams/deleteTeam?idTeam=${id}`, {
+    headers: { Authorization: authStr },
+  });
+  return team.data;
+};

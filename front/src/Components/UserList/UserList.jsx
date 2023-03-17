@@ -7,6 +7,16 @@ import { getAllUser } from "../../Services/UserServices";
 function UserList() {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
+
+  const updateList = () => {
+    getAllUser()
+      .then((result) => {
+        setUsers(result.data);
+        setLoading(false);
+      })
+      .catch((err) => {});
+  };
+
   useEffect(() => {
     getAllUser()
       .then((result) => {
@@ -59,7 +69,7 @@ function UserList() {
           </thead>
           <tbody className="divide-y divide-gray-100 border-t border-gray-100">
             {users.map((user, i) => (
-              <UserCard data={user} key={i} />
+              <UserCard data={user} key={i} onAction={updateList} />
             ))}
           </tbody>
         </table>

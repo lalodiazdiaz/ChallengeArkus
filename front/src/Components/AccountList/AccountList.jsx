@@ -7,6 +7,15 @@ import { getAccounts } from "../../Services/AccountService";
 function AccountList() {
   const [accounts, setAccounts] = useState();
   const [loading, setLoading] = useState(true);
+
+  const updateList = () => {
+    getAccounts()
+      .then((result) => {
+        setAccounts(result.data);
+        setLoading(false);
+      })
+      .catch((err) => {});
+  };
   useEffect(() => {
     getAccounts()
       .then((result) => {
@@ -54,7 +63,7 @@ function AccountList() {
           </thead>
           <tbody className="divide-y divide-gray-100 border-t border-gray-100">
             {accounts.map((account, i) => (
-              <AccountCard data={account} key={i} />
+              <AccountCard data={account} key={i} onAction={updateList} />
             ))}
           </tbody>
         </table>
