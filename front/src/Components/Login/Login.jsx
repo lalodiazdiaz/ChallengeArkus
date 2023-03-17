@@ -57,11 +57,13 @@ function Login() {
               showConfirmButton: false,
               timer: 1500,
             });
-            if (localStorage.getItem("rol") === ROL.user) {
-              navigation("/homeUser");
-            } else {
-              navigation("/homeAdmin");
-            }
+            setTimeout(() => {
+              if (localStorage.getItem("rol") === ROL.user) {
+                navigation("/homeUser");
+              } else {
+                navigation("/homeAdmin");
+              }
+            }, 1500);
           }
         })
         .catch((err) => {

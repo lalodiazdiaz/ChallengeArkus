@@ -95,9 +95,7 @@ const deleteUser = async (req, res) => {
     const validatedData = await userDTO.inputGetOneUserAndDeleteUser(req.query);
     if (validatedData.isValid === false)
       return res.status(422).send(validatedData);
-
     const data = await userService.deleteUser(validatedData);
-    
     return res.status(200).send({
       isValid: true,
       message: data.message,

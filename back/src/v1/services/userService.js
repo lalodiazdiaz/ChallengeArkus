@@ -11,10 +11,6 @@ async function find(data) {
   const accounts = await userModel.find(data);
   return accounts;
 }
-async function deleteUser(id) {
-  const user = await userModel.findOneAndDelete(id);
-  return user;
-}
 
 async function userRegistration(data) {
   const encryptedPassword = await bycrypt.hash(data.data.password, 10);
@@ -55,8 +51,14 @@ async function getOneUser(data) {
   };
 }
 
+async function deleteU(id) {
+  console.log(id);
+  const user = await userModel.findOneAndDelete(id);
+  return user;
+}
+
 async function deleteUser(data) {
-  const deletedUser = await deleteUser({ _id: data.idUser });
+  const deletedUser = await deleteU(data.idUser);
 
   return {
     isValid: true,
