@@ -1,10 +1,12 @@
+require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
+const swaggerJsdoc = require("swagger-jsdoc");
+const swaggerUi = require("swagger-ui-express");
 const cors = require("cors");
 const app = express();
-
-require("dotenv").config();
+const Document = require(`./${process.env.VERSION}/swaager/config.json`);
 
 mongoose
   .connect(process.env.MONGODB_URI)
@@ -32,6 +34,8 @@ app.use(
   `/api/${process.env.VERSION}`,
   require(`../src/${process.env.VERSION}/routes`)
 );
+
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(Document));
 
 app.use((req, res, next) => {
   return res.status(404).send({

@@ -1,0 +1,226 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "Arkus Challenge",
+        "version": "1.0.0"
+    },
+    "produces": ["application/json"],
+    "host": "localhost:5000",
+    "basePath": "/api/v1",
+    "securityDefinitions": {
+        "bearerAuth": {
+          "name": "Authorization",
+          "in": "header",
+          "type": "apiKey",
+          "description": "enter the session token includes the word Bearer and a space before the token",
+          "schema": "bearer"
+        }
+    },
+    "paths": {
+        "/login": {
+            "post": {
+                "x-swagger-router-controller": "middleware-name1",
+                "operationId": "login",
+                "tags": ["Login"],
+                "summary": "Log a user",
+                "parameters": [ 
+                {
+                    "in": "body",
+                    "name": "User Data",
+                    "required": true,
+                    "type": "string",
+                    "schema": {
+                      "properties": {
+                        "email": {
+                            "type": "string"
+                        },
+                        "password": {
+                            "type": "string"
+                        }
+                      }
+                    }
+                }                
+                ],
+                "responses": {}
+            }
+        },
+        "/accounts/createAccount": {
+                "post": {
+                    "x-swagger-router-controller": "middleware-name1",
+                    "operationId": "accounts",
+                    "tags": ["Accounts"],
+                    "security": [{ "bearerAuth": [] }],
+                    "summary": "Create an account",
+                    "parameters": [ 
+                    {
+                        "in": "body",
+                        "name": "User Data",
+                        "required": true,
+                        "type": "string",
+                        "schema": {
+                          "properties": {
+                            "accountName": {
+                                "type": "string"
+                            },
+                            "client": {
+                                "type": "string"
+                            },
+                            "operationManager": {
+                                "type": "string"
+                            }
+                          }
+                        }
+                    }                
+                    ],
+                    "responses": {}
+                }
+        },
+      
+        "/accounts/deleteAccount": {
+            "delete": {
+                "x-swagger-router-controller": "middleware-name1",
+                "operationId": "accounts",
+                "tags": ["Accounts"],
+                "security": [{ "bearerAuth": [] }],
+                "summary": "Delete an account",
+                "parameters": [ 
+                    {
+                        "in": "query",
+                        "name": "idAccount",
+                        "required": true,
+                        "type": "string",
+                        "schema": {
+                          "properties": {
+                            "idAccount": {
+                                "type": "string"
+                            }
+                          }
+                        }
+                    }  
+                ],
+                "responses": {}
+            }
+        },
+        "/accounts/getAccounts": {
+            "get": {
+                "x-swagger-router-controller": "middleware-name1",
+                "operationId": "accounts",
+                "tags": ["Accounts"],
+                "summary": "Get an account",
+                "security": [{ "bearerAuth": [] }],
+                "parameters": [ 
+                            
+                ],
+                "responses": {}
+            }
+        },
+        
+        "/teams/createTeam": {
+                "post": {
+                    "x-swagger-router-controller": "middleware-name1",
+                    "operationId": "teams",
+                    "tags": ["Teams"],
+                    "security": [{ "bearerAuth": [] }],
+                    "summary": "Create an team",
+                    "parameters": [ 
+                    {
+                        "in": "body",
+                        "name": "User Data",
+                        "required": true,
+                        "type": "string",
+                        "schema": {
+                          "properties": {
+                            "teamName": {
+                                "type": "string"
+                            }
+                          
+                          }
+                        }
+                    }                
+                    ],
+                    "responses": {}
+                }
+        },
+      
+        "/teams/deleteTeam": {
+            "delete": {
+                "x-swagger-router-controller": "middleware-name1",
+                "operationId": "teams",
+                    "tags": ["Teams"],
+                "security": [{ "bearerAuth": [] }],
+                "summary": "Delete an account",
+                "parameters": [ 
+                    {
+                        "in": "query",
+                        "name": "idTeam",
+                        "required": true,
+                        "type": "string",
+                        "schema": {
+                          "properties": {
+                            "idAccount": {
+                                "type": "string"
+                            }
+                          }
+                        }
+                    }  
+                ],
+                "responses": {}
+            }
+        },
+        "/teams/getTeams": {
+            "get": {
+                "x-swagger-router-controller": "middleware-name1",
+                "operationId": "teams",
+                "tags": ["Teams"],
+                "summary": "Get all teams",
+                "security": [{ "bearerAuth": [] }],
+                "parameters": [ 
+                            
+                ],
+                "responses": {}
+            }
+        },
+        "/log/createLog": {
+                "post": {
+                    "x-swagger-router-controller": "middleware-name1",
+                    "operationId": "log",
+                    "tags": ["Log"],
+                    "security": [{ "bearerAuth": [] }],
+                    "summary": "Create an user move",
+                    "parameters": [ 
+                    {
+                        "in": "body",
+                        "name": "User Data",
+                        "required": true,
+                        "type": "string",
+                        "schema": {
+                          "properties": {
+                            "teamName": {
+                                "type": "string"
+                            }
+                          
+                          }
+                        }
+                    }                
+                    ],
+                    "responses": {}
+                }
+        },
+      
+        "/log/getMoves": {
+            "get": {
+                "x-swagger-router-controller": "middleware-name1",
+                "operationId": "log",
+                "tags": ["Log"],
+                "summary": "Get all moves",
+                "security": [{ "bearerAuth": [] }],
+                "parameters": [ 
+                            
+                ],
+                "responses": {}
+            }
+        }
+      
+      
+    }
+}

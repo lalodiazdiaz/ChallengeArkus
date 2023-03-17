@@ -28,6 +28,7 @@ const firewall = async (req, res, next) => {
     if (!user) {
       return res.status(401).send("Unauthorized 1");
     }
+    
     jwt.verify(bearer, process.env.TOKEN, (error) => {
       if (error) {
         return res.status(401).send("Unauthorized");
