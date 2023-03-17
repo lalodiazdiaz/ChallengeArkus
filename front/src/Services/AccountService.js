@@ -23,12 +23,9 @@ export const getAccounts = async () => {
   return accounts.data;
 };
 
-export const deleteAccount = async (id) => {
-  const account = await axios.delete(
-    `${API}/accounts/deleteAccount?idAccount=${id}`,
-    {
-      headers: { Authorization: authStr },
-    }
-  );
+export const deleteA = async (id) => {
+  const account = await axios.delete(`${API}/deleteAccount?idAccount=${id}`, {
+    headers: { Authorization: authStr },
+  });
   return account.data;
 };
