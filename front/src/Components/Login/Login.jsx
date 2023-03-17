@@ -47,6 +47,7 @@ function Login() {
           if (result.isValid) {
             localStorage.setItem("rol", result.data.range);
             localStorage.setItem("Token", result.data.token);
+            localStorage.setItem("idUser", result.data.idUser);
             if (result.data.range === ROL.user) {
               localStorage.setItem("idUser", result.data.idUser);
             }

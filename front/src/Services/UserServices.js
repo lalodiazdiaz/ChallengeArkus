@@ -29,3 +29,10 @@ export const getOneUser = async (id) => {
   });
   return user.data;
 };
+
+export const deleteUSer = async (id) => {
+  const user = await axios.delete(`${API}/users/deleteUser?idUser=${id}`, {
+    headers: { Authorization: authStr },
+  });
+  return user.data;
+};

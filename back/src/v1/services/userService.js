@@ -52,13 +52,13 @@ async function getOneUser(data) {
 }
 
 async function deleteU(id) {
-  console.log(id);
   const user = await userModel.findOneAndDelete(id);
   return user;
 }
 
 async function deleteUser(data) {
-  const deletedUser = await deleteU(data.idUser);
+  console.log(data);
+  const deletedUser = await deleteU({ _id: data.idUser });
 
   return {
     isValid: true,

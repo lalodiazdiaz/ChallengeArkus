@@ -12,6 +12,11 @@ app.post(
 );
 app.get("/getUsers", authorization, userController.getUsers);
 app.get("/getOneUser", authorization, userController.getOneUser);
-app.delete("/deleteUser", authorization, userController.deleteUser);
+app.delete(
+  "/deleteUser",
+  authorization,
+  range.superAndAdmin,
+  userController.deleteUser
+);
 
 module.exports = app;
