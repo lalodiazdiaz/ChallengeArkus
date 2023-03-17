@@ -66,11 +66,12 @@ function Login() {
         })
         .catch((err) => {
           Swal.fire({
-            position: "center",
             icon: "error",
-            html: " <p>Error!</p>",
             showConfirmButton: false,
-            timer: 1500,
+            title: "Oops...",
+            text: "Something went wrong!",
+            footer: err.response.data.message,
+            timer: 2000,
           });
         });
     },
