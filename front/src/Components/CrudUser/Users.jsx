@@ -125,15 +125,14 @@ function Users() {
             >
               {localStorage.getItem("rol") === ROL.super ? (
                 <>
-                  <option value="">--Please choose an user--</option>
+                  <option value="">--Please choose a rol--</option>
                   <option value="user">User</option>
                   <option value="admin">Admin</option>
                 </>
               ) : (
                 <>
-                  <option selected value="user">
-                    User
-                  </option>
+                  <option value="">--Please choose a rol--</option>
+                  <option value="user">User</option>
                 </>
               )}
             </select>

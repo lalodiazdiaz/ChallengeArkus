@@ -34,7 +34,7 @@ function UserList() {
         </div>
       ) : (
         <table className="w-[90%] border-collapse bg-white text-left text-sm text-gray-500 rounded-t-lg">
-          <thead className="bg-gray-300">
+          <thead className="bg-gray-200">
             <tr>
               <th scope="col" className="px-6 py-4 font-medium text-gray-900">
                 Name
