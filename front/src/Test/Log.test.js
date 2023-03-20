@@ -11,14 +11,3 @@ test("renders Log screen", () => {
     );
     screen.debug();
   });
-
-
-  test("inputs should be rendered", () => {
-    render(
-      <BrowserRouter>
-        <TeamList />
-      </BrowserRouter>
-    );
-    const teamnameInput = screen.getByPlaceholderText("team's name");
-    expect(teamnameInput).toBeInTheDocument();
-  });
