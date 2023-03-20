@@ -19,7 +19,7 @@ const validate = (values) => {
   return errors;
 };
 
-function Login() {
+function Login({ onSubmit }) {
   const navigation = useNavigate();
 
   const formik = useFormik({
@@ -73,10 +73,13 @@ function Login() {
         <div className="mx-auto flex h-full w-2/3 flex-col justify-center text-white xl:w-1/2">
           <div className="flex">
             <div>
-              <p className="text-2xl">Login</p>
+              <p className="text-2xl" data-testid="title">
+                Login
+              </p>
               <p>please login to continue |</p>
             </div>
             <img
+              data-testid="logo"
               className="h-20 text-center ml-3"
               src="https://uploads-ssl.webflow.com/5e589a8b7bb9af87ad968338/613f82a2bceafc58516997ab_ArkusNexus_iso.png"
               alt="mind"
@@ -87,6 +90,7 @@ function Login() {
               <div>
                 <label className="mb-2.5 block font-extrabold">Email</label>
                 <input
+                  data-testid="email"
                   type="email"
                   id="email"
                   name="email"
@@ -105,6 +109,7 @@ function Login() {
                 </label>
                 <div className="flex flex-row leading-none text-gray-900 justify-center items-center mt-4">
                   <input
+                    data-testid="pass"
                     id="password"
                     name="password"
                     type="password"
@@ -121,6 +126,7 @@ function Login() {
 
               <div className="my-10">
                 <button
+                  name="submit"
                   type="submit"
                   className="w-full rounded bg-red-600 p-2.5 hover:bg-red-800 flex text-center justify-center"
                 >
