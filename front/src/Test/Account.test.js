@@ -126,6 +126,5 @@ test("renders Account screen", () => {
     await act(async() => {
       fireEvent.change(OperationInput, { target: { value: operationTest } });
     });
-  
     expect(OperationInput.value).toBe(operationTest);
   });

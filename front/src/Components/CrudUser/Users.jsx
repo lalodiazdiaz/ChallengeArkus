@@ -69,9 +69,11 @@ function Users() {
               Name
             </label>
             <input
+              data-testid="nameInput"
               id="name"
               name="name"
               type="text"
+              placeholder="User name"
               onChange={formik.handleChange}
               value={formik.values.name}
               className="leading-none  text-gray-900 p-2.5  focus:border-blue-700 mt-4 bg-gray-100 border rounded border-gray-200"
@@ -85,6 +87,7 @@ function Users() {
               Email
             </label>
             <input
+              data-testid="emailInput"
               type="email"
               id="email"
               name="email"
@@ -103,6 +106,7 @@ function Users() {
               Password
             </label>
             <input
+              data-testid="passInput"
               id="password"
               name="password"
               type="text"
@@ -122,6 +126,7 @@ function Users() {
               onChange={formik.handleChange}
               id="range"
               name="range"
+              data-testid="rangeSelect"
             >
               {localStorage.getItem("rol") === ROL.super ? (
                 <>
@@ -144,6 +149,7 @@ function Users() {
               English level
             </label>
             <input
+              data-testid="englishInput"
               id="englishLevel"
               name="englishLevel"
               type="text"
@@ -157,6 +163,7 @@ function Users() {
               Resume link
             </label>
             <input
+              data-testid="cvInput"
               id="CV"
               name="CV"
               onChange={formik.handleChange}
@@ -173,6 +180,7 @@ function Users() {
               Technical knowledge
             </label>
             <textarea
+              data-testid="knowledgeInput"
               id="techKnowledge"
               name="techKnowledge"
               onChange={formik.handleChange}
@@ -185,6 +193,7 @@ function Users() {
 
         <div className="flex items-center justify-end w-full">
           <button
+            data-testid="saveButton"
             type="submit"
             className=" w-52 mt-9 font-semibold leading-none text-white p-2.5 bg-red-600 rounded hover:bg-red-800 flex justify-center text-center items-center"
           >

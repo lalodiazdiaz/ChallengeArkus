@@ -82,6 +82,7 @@ function TeamList() {
               id="teamName"
               name="teamName"
               type="text"
+              placeholder="team's name"
               onChange={formik.handleChange}
               value={formik.values.teamName}
               className="leading-none text-gray-900 p-2.5 focus:outline-none focus:border-blue-700 mt-4 bg-gray-100 border rounded border-gray-200"
