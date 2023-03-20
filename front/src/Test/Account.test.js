@@ -100,7 +100,7 @@ test("renders Account screen", () => {
     expect(accountNameInput.value).toBe(accountTest);
   });
   
-  test("Password input should change", async () => {
+  test("Client input should change", async () => {
     render(
       <BrowserRouter>
         <Account />
@@ -113,4 +113,19 @@ test("renders Account screen", () => {
     });
   
     expect(clientInput.value).toBe(clientTest);
+  });
+
+  test("Operation manager input should change", async () => {
+    render(
+      <BrowserRouter>
+        <Account />
+      </BrowserRouter>
+    );
+    const OperationInput = screen.getByPlaceholderText("Operations manager name");
+    const operationTest = "Victor";
+    await act(async() => {
+      fireEvent.change(OperationInput, { target: { value: operationTest } });
+    });
+  
+    expect(OperationInput.value).toBe(operationTest);
   });
