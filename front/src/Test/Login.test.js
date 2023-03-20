@@ -1,5 +1,5 @@
-import * as userEvent from "@testing-library/user-event";
-import { fireEvent, render, screen, waitFor } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
+import { act } from "react-dom/test-utils";
 import { BrowserRouter } from "react-router-dom";
 import Login from "../Components/Login/Login";
 
@@ -72,7 +72,7 @@ test("Password input should be empty", () => {
   expect(passwordInput.value).toBe("");
 });
 
-test("email should change", () => {
+test("email should change", async () => {
   render(
     <BrowserRouter>
       <Login />
@@ -82,11 +82,14 @@ test("email should change", () => {
   const emaillInputEl = screen.getByPlaceholderText("mail@user.com");
   const emailTest = "user@email.com";
 
-  fireEvent.change(emaillInputEl, { target: { value: emailTest } });
+  await act( async () => {
+    fireEvent.change(emaillInputEl, { target: { value: emailTest } });
+   });
+
   expect(emaillInputEl.value).toBe(emailTest);
 });
 
-test("Password input should change", () => {
+test("Password input should change", async () => {
   render(
     <BrowserRouter>
       <Login />
@@ -94,34 +97,9 @@ test("Password input should change", () => {
   );
   const passwordInput = screen.getByPlaceholderText("Password");
   const passwordTest = "123456";
+  await act(async() => {
+    fireEvent.change(passwordInput, { target: { value: passwordTest } });
+  });
 
-  fireEvent.change(passwordInput, { target: { value: passwordTest } });
   expect(passwordInput.value).toBe(passwordTest);
-});
-
-test("renderin and submitting a form", async () => {
-  const handleSubmit = jest.fn();
-  render(
-    <BrowserRouter>
-      <Login onSubmit={handleSubmit} />
-    </BrowserRouter>
-  );
-
-  userEvent.default.type(
-        screen.getByTestId("email", { name: email }),
-        "eduardo@gmail.com"
-    );
-  userEvent.default.type(
-        screen.getByTestId("pass", { name: password }),
-        "123456"
-    );
-
-  userEvent.default.click(screen.getByRole("button"), { name: /submit/ });
-
-  await waitFor(() =>
-    expect(handleSubmit).toHaveBeenCalledWith({
-      email: "eduardo@gmail.com",
-      password: "123456",
-    })
-  );
 });

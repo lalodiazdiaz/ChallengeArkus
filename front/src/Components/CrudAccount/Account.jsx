@@ -63,6 +63,7 @@ function Account() {
               id="accountName"
               name="accountName"
               type="text"
+              placeholder="Account name"
               onChange={formik.handleChange}
               value={formik.values.accountName}
               className="leading-none text-gray-900 p-2.5 focus:outline-none focus:border-blue-700 mt-4 bg-gray-100 border rounded border-gray-200"
@@ -80,6 +81,7 @@ function Account() {
             <input
               id="client"
               name="client"
+              placeholder="Client name"
               onChange={formik.handleChange}
               value={formik.values.client}
               type="text"
@@ -99,6 +101,7 @@ function Account() {
             <input
               id="operationManager"
               name="operationManager"
+            placeholder="Operations manager name"
               type="text"
               onChange={formik.handleChange}
               value={formik.values.operationManager}
