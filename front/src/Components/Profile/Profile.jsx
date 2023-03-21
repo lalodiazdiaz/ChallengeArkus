@@ -2,12 +2,14 @@ import { FolderPlusIcon } from "@heroicons/react/24/outline";
 import React, { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import { getOneUser } from "../../Services/UserServices";
-
-const idUser = localStorage.getItem("idUser");
+import { useLocation } from "react-router-dom";
 
 function Profile() {
+  const location = useLocation();
   const [userData, setUserData] = useState();
   const [loading, setLoading] = useState(true);
+
+  let userId = location.state.userId;
 
   const saveChange = () => {
     Swal.fire({
@@ -26,7 +28,7 @@ function Profile() {
   };
 
   useEffect(() => {
-    getOneUser(idUser)
+    getOneUser(userId)
       .then((result) => {
         setUserData(result.data);
         setLoading(false);

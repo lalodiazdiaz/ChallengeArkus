@@ -12,85 +12,31 @@ test("renders teams screen", () => {
   screen.debug();
 });
 
-test("User name input should be rendered", () => {
+test("Elements should be rendered", () => {
   render(
     <BrowserRouter>
       <Users />
     </BrowserRouter>
   );
   const userNameinput = screen.getByTestId("nameInput");
-  expect(userNameinput).toBeInTheDocument();
-});
-
-test("Email name input should be rendered", () => {
-  render(
-    <BrowserRouter>
-      <Users />
-    </BrowserRouter>
-  );
   const emailInput = screen.getByTestId("emailInput");
-  expect(emailInput).toBeInTheDocument();
-});
-
-test("Password name input should be rendered", () => {
-  render(
-    <BrowserRouter>
-      <Users />
-    </BrowserRouter>
-  );
   const passInput = screen.getByTestId("passInput");
-  expect(passInput).toBeInTheDocument();
-});
-
-test("Rol Select should be rendered", () => {
-  render(
-    <BrowserRouter>
-      <Users />
-    </BrowserRouter>
-  );
   const rangeSelect = screen.getByTestId("rangeSelect");
-  expect(rangeSelect).toBeInTheDocument();
-});
-
-test("English level input should be rendered", () => {
-  render(
-    <BrowserRouter>
-      <Users />
-    </BrowserRouter>
-  );
   const englishLevelInput = screen.getByTestId("englishInput");
-  expect(englishLevelInput).toBeInTheDocument();
-});
-
-test("CV input should be rendered", () => {
-  render(
-    <BrowserRouter>
-      <Users />
-    </BrowserRouter>
-  );
   const cvInput = screen.getByTestId("cvInput");
-  expect(cvInput).toBeInTheDocument();
-});
-
-test("knowledge input should be rendered", () => {
-  render(
-    <BrowserRouter>
-      <Users />
-    </BrowserRouter>
-  );
   const knowledgeInput = screen.getByTestId("knowledgeInput");
-  expect(knowledgeInput).toBeInTheDocument();
-});
-
-test("Save buttonshould be rendered", () => {
-  render(
-    <BrowserRouter>
-      <Users />
-    </BrowserRouter>
-  );
   const buttonSave = screen.getByTestId("saveButton");
+
+  expect(userNameinput).toBeInTheDocument();
+  expect(emailInput).toBeInTheDocument();
+  expect(passInput).toBeInTheDocument();
+  expect(rangeSelect).toBeInTheDocument();
+  expect(englishLevelInput).toBeInTheDocument();
+  expect(cvInput).toBeInTheDocument();
+  expect(knowledgeInput).toBeInTheDocument();
   expect(buttonSave).toBeInTheDocument();
 });
+
 
 test("Inputs should be empty", () => {
   render(
@@ -99,23 +45,24 @@ test("Inputs should be empty", () => {
     </BrowserRouter>
   );
   const userNameinput = screen.getByTestId("nameInput");
-  expect(userNameinput.value).toBe("");
   const emailInput = screen.getByTestId("emailInput");
-  expect(emailInput.value).toBe("");
   const passInput = screen.getByTestId("passInput");
-  expect(passInput.value).toBe("");
   const rangeSelect = screen.getByTestId("rangeSelect");
-  expect(rangeSelect.value).toBe("");
   const englishInput = screen.getByTestId("englishInput");
-  expect(englishInput.value).toBe("");
   const cvInput = screen.getByTestId("cvInput");
-  expect(cvInput.value).toBe("");
   const knowledgeInput = screen.getByTestId("knowledgeInput");
+  
+  expect(userNameinput.value).toBe("");
+  expect(emailInput.value).toBe("");
+  expect(passInput.value).toBe("");
+  expect(rangeSelect.value).toBe("");
+  expect(englishInput.value).toBe("");
+  expect(cvInput.value).toBe("");
   expect(knowledgeInput.value).toBe("");
 });
 
 
-test("Team name input should change", async () => {
+test("inputs should change", async () => {
     render(
       <BrowserRouter>
         <Users />
@@ -138,6 +85,7 @@ test("Team name input should change", async () => {
         cv:'http://cv.com',
         knowledge:'React'
     };
+    
     await act(async() => {
       fireEvent.change(userNameinput, { target: { value: dataTest.name } });
       fireEvent.change(passInput, { target: { value: dataTest.pass } });

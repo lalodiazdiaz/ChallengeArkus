@@ -19,7 +19,8 @@ const validate = (values) => {
   return errors;
 };
 
-function Login({ onSubmit }) {
+function Login({ saveData }) {
+
   const navigation = useNavigate();
 
   const formik = useFormik({
@@ -47,7 +48,11 @@ function Login({ onSubmit }) {
             });
             setTimeout(() => {
               if (localStorage.getItem("rol") === ROL.user) {
-                navigation("/homeUser");
+                navigation("/homeUser", {
+                  state: {
+                    userId: result.data.idUser,
+                  }
+                });
               } else {
                 navigation("/homeAdmin");
               }
@@ -88,10 +93,11 @@ function Login({ onSubmit }) {
           <div className="mt-10">
             <form onSubmit={formik.handleSubmit}>
               <div>
-                <label className="mb-2.5 block font-extrabold">Email</label>
+                <label htmlFor="email" className="mb-2.5 block font-extrabold">Email</label>
                 <input
                   data-testid="email"
                   type="email"
+
                   id="email"
                   name="email"
                   onChange={formik.handleChange}
@@ -104,7 +110,7 @@ function Login({ onSubmit }) {
                 ) : null}
               </div>
               <div className="inline-block w-full  rounded  leading-none text-white placeholder-indigo-900 mt-4 ">
-                <label className="font-semibold leading-none  text-white">
+                <label htmlFor="password" className="font-semibold leading-none  text-white">
                   Password
                 </label>
                 <div className="flex flex-row leading-none text-gray-900 justify-center items-center mt-4">
@@ -131,7 +137,7 @@ function Login({ onSubmit }) {
                   className="w-full rounded bg-red-600 p-2.5 hover:bg-red-800 flex text-center justify-center"
                 >
                   <ArrowRightOnRectangleIcon className="h-6 w-6 text-white mr-2" />
-                  Login{" "}
+                  Login
                 </button>
               </div>
             </form>
